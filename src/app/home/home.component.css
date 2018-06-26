@@ -1,0 +1,52 @@
+/* FONT FOR THE HOMEPAGE*/
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=Caveat|Special+Elite');
+
+
+/*FONT GENERAL*/
+button {
+  font-family: 'Special Elite', cursive;
+}
+
+#Fort {
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+  margin: 0;
+  min-width: 100%;
+  min-height: 80%;
+}
+
+.homeIndex {
+  z-index: 0;
+  display: flex;
+
+}
+
+.textIndex {
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  text-align: center;
+
+}
+
+.underIndex {
+  position: absolute;
+  z-index: 0;
+}
+
+.homeParagraph {
+  color: white;
+  font-size: 3rem;
+  font-family: 'Special Elite', cursive;
+}
+
+.homeParagraphIntro {
+  color: white;
+  font-size: 1.5rem;
+  font-family: 'Special Elite', cursive;
+}
