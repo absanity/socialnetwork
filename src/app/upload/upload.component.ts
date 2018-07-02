@@ -11,6 +11,6 @@ export class UploadComponent {
   constructor(public uploadService: UploadService) {}
 
   public openUploadDialog() {
-    let dialogRef = this.dialog.open(DialogComponent, { width: '50%', height: '50%' });
+    // let dialogRef = this.dialog.open(DialogComponent, { width: '50%', height: '50%' });
   }
 }

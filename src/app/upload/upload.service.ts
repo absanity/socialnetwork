@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import {Observable, Subject} from "rxjs/index";
+// import { Subject } from 'rxjs/Subject';
+// import { Observable } from 'rxjs/Observable';
 
 const url = 'http://localhost:8000/upload';
 

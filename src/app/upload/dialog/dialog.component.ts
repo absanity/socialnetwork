@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { UploadService } from '../upload.service';
-import { forkJoin } from 'rxjs/observable/forkJoin';
+// import { forkJoin } from 'rxjs/observable/forkJoin';
 
 @Component({
   selector: 'app-dialog',
@@ -9,7 +9,7 @@ import { forkJoin } from 'rxjs/observable/forkJoin';
 })
 export class DialogComponent implements OnInit {
   @ViewChild('file') file;
-  public files: Set<file> = new Set();
+  // public files: Set<file> = new Set();
   addFiles() {
     this.file.nativeElement.click();
   }
@@ -17,9 +17,9 @@ export class DialogComponent implements OnInit {
   onFilesAdded() {
   const files: { [key: string]: File } = this.file.nativeElement.files;
   for (let key in files) {
-    if (!isNaN(parseInt(key))) {
-      this.files.add(files[key]);
-    }
+    // if (!isNaN(parseInt(key))) {
+    //   this.files.add(files[key]);
+    // }
   }
 }
 
@@ -35,14 +35,14 @@ uploadSuccessful = false;
   closeDialog() {
   // if everything was uploaded already, just close the dialog
   if (this.uploadSuccessful) {
-    return this.dialogRef.close();
+    // return this.dialogRef.close();
   }
 
   // set the component state to "uploading"
   this.uploading = true;
 
   // start the upload and save the progress map
-  this.progress = this.uploadService.upload(this.files);
+  // this.progress = this.uploadService.upload(this.files);
 
   // convert the progress map into an array
   let allProgressObservables = [];
@@ -57,23 +57,23 @@ uploadSuccessful = false;
 
   // The dialog should not be closed while uploading
   this.canBeClosed = false;
-  this.dialogRef.disableClose = true;
+  // this.dialogRef.disableClose = true;
 
   // Hide the cancel-button
   this.showCancelButton = false;
 
   // When all progress-observables are completed...
-  forkJoin(allProgressObservables).subscribe(end => {
-    // ... the dialog can be closed again...
-    this.canBeClosed = true;
-    this.dialogRef.disableClose = false;
-
-    // ... the upload was successful...
-    this.uploadSuccessful = true;
-
-    // ... and the component is no longer uploading
-    this.uploading = false;
-  });
+  // forkJoin(allProgressObservables).subscribe(end => {
+  //   // ... the dialog can be closed again...
+  //   this.canBeClosed = true;
+  //   this.dialogRef.disableClose = false;
+  //
+  //   // ... the upload was successful...
+  //   this.uploadSuccessful = true;
+  //
+  //   // ... and the component is no longer uploading
+  //   this.uploading = false;
+  // });
 }
 
   ngOnInit() {
