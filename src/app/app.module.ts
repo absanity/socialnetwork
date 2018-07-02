@@ -21,6 +21,42 @@ import {InvitationsComponent} from './invitations/invitations.component';
 import {MessagesComponent} from './messages/messages.component';
 import { UploadModule } from './upload/upload.module';
 
+
+import {
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatAutocompleteModule,
+} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +76,8 @@ import { UploadModule } from './upload/upload.module';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    UploadModule
+    UploadModule,
+    MatDialogModule
   ],
   providers: [AuthService, AuthGuard, EventService, {
     provide: HTTP_INTERCEPTORS,

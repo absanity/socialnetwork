@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatDialog} from "@angular/material";
+
 import { DialogComponent } from './dialog/dialog.component';
 import { UploadService } from './upload.service';
 
@@ -8,9 +10,10 @@ import { UploadService } from './upload.service';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent {
-  constructor(public uploadService: UploadService) {}
+  constructor(public uploadService: UploadService,
+              public dialog: MatDialog) {}
 
   public openUploadDialog() {
-    // let dialogRef = this.dialog.open(DialogComponent, { width: '50%', height: '50%' });
+    let dialogRef = this.dialog.open(DialogComponent, <any>{ width: '50%', height: '50%' });
   }
 }
