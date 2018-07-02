@@ -1,0 +1,23 @@
+.profilePic {
+  width: 10rem;
+  height: 12rem;
+  background-color: #94BC98;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+p{
+  font-size: 3rem;
+}
+
+button {
+  visibility: hidden;
+}
+
+.profilePic:hover button{
+  visibility: visible;
+}

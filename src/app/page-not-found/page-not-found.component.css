@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat|Special+Elite');
+
+nf {
+  max-width: 100%;
+	height: auto;
+  vertical-align: middle;
+}
+
+.notFoundBlock {
+  position: absolute;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 56vh; /* poussé de la moitié de hauteur de viewport */
+  text-align: center;
+}
+
+.displayError {
+
+}
+
+#error {
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+  margin: 0;
+  min-width: 100%;
+  min-height: 80%;
+}
+
+.warn {
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #9a1d1d;
+  color: white;
+  font-size: 2rem;
+  font-family: 'Special Elite', cursive;
+}
+
+.warnB {
+  background-color: #9a1d1d;
+  font-family: 'Special Elite', cursive;
+  color: white;
+  border: 0px;
+}

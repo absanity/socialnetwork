@@ -18,10 +18,12 @@
       <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">login</a>
       <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
       <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">Logout</a>
+      <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.LogoutUser()" routerLink="/profil" routerLinkActive="active">Mon profil</a>
     </ul>
   </div>
 </nav>
 <div class="background">
 
   <router-outlet></router-outlet>
+  <app-upload></app-upload>
 </div>

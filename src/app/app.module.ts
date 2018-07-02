@@ -19,6 +19,7 @@ import {ProfilComponent} from './profil/profil.component';
 import {MembresComponent} from './membres/membres.component';
 import {InvitationsComponent} from './invitations/invitations.component';
 import {MessagesComponent} from './messages/messages.component';
+import { UploadModule } from './upload/upload.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MessagesComponent} from './messages/messages.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    UploadModule
   ],
   providers: [AuthService, AuthGuard, EventService, {
     provide: HTTP_INTERCEPTORS,

@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-profil',
@@ -7,7 +10,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ProfilComponent implements OnInit {
 
-  constructor() {
+  constructor(private _router: Router) {
   }
 
   ngOnInit() {
