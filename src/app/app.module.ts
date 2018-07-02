@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
-
+import {DialogComponent} from './upload/dialog/dialog.component';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
@@ -19,7 +19,7 @@ import {ProfilComponent} from './profil/profil.component';
 import {MembresComponent} from './membres/membres.component';
 import {InvitationsComponent} from './invitations/invitations.component';
 import {MessagesComponent} from './messages/messages.component';
-import { UploadModule } from './upload/upload.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 import {
@@ -69,22 +69,26 @@ import {
     ProfilComponent,
     MembresComponent,
     InvitationsComponent,
-    MessagesComponent
+    MessagesComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    UploadModule,
-    MatDialogModule
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService, AuthGuard, EventService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+        DialogComponent
+    ],
 })
 export class AppModule {
 }
