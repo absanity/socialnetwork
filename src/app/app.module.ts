@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
-import {DialogComponent} from './upload/dialog/dialog.component';
+import {DialogComponent} from './dialog/dialog.component';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';

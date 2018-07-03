@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material";
 
-import { DialogComponent } from './dialog/dialog.component';
-import { UploadService } from './upload.service';
+import {DialogComponent} from '../dialog/dialog.component';
+import {UploadService} from './upload.service';
 
 @Component({
   selector: 'app-upload',
@@ -11,9 +11,10 @@ import { UploadService } from './upload.service';
 })
 export class UploadComponent {
   constructor(public uploadService: UploadService,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog) {
+  }
 
   public openUploadDialog() {
-    let dialogRef = this.dialog.open(DialogComponent, <any>{ width: '50%', height: '50%' });
+    let dialogRef = this.dialog.open(DialogComponent, <any>{width: '50%', height: '50%'});
   }
 }

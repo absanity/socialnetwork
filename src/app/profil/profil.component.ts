@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
 import {MatDialog} from "@angular/material";
-import {DialogComponent} from '../upload/dialog/dialog.component';
+import {DialogComponent} from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-profil',
@@ -11,24 +11,25 @@ import {DialogComponent} from '../upload/dialog/dialog.component';
 })
 export class ProfilComponent implements OnInit {
 
+  dialogRef: any;
+
   constructor(private _router: Router,
-              public dialog: MatDialog
-              ) {
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
   }
 
   modify() {
-    let dialogRef = this.dialog.open(DialogComponent, <any>{
-        width: '700px',
-        height: '400px',
+    this.dialogRef = this.dialog.open(DialogComponent, <any>{
+      width: '200px',
+      height: '50px',
+      data: {}
     });
 
-  /*  const sub = this.dialogRef.componentInstance.onContactAdd.subscribe((event) => {
-        this.addContact(event);
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
-    */
   }
 
 }
