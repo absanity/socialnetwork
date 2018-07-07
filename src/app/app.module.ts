@@ -56,8 +56,8 @@ import {
   MatTooltipModule,
   MatAutocompleteModule,
 } from '@angular/material';
-import { InvalidmessageDirective } from './invalidmessage.directive';
-import { InvalidtypeDirective } from './invalidtype.directive';
+//import { InvalidmessageDirective } from './invalidmessage.directive';
+//import { InvalidtypeDirective } from './invalidtype.directive';
 
 @NgModule({
   declarations: [
@@ -73,8 +73,8 @@ import { InvalidtypeDirective } from './invalidtype.directive';
     InvitationsComponent,
     MessagesComponent,
     DialogComponent,
-    InvalidmessageDirective,
-    InvalidtypeDirective
+  //  InvalidmessageDirective,
+  //  InvalidtypeDirective
   ],
   imports: [
     BrowserModule,

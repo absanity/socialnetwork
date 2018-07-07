@@ -5,28 +5,28 @@
         <h3 class="mb-0">Register</h3>
       </div>
       <div class="card-body">
-        <form class="form" [formGroup]="myForm">
+        <form class="form">
           <div class="form-group">
             <label for="">Email</label>
-            <input [(ngModel)]="registerUserData.email" name="email" type="email" class="form-control rounded 0" formControlName="email"required>
-            <div invalidmessage="email">
+            <input [(ngModel)]="registerUserData.email" name="email" type="email" class="form-control rounded 0" required>
+    <!-- [formGroup]="myForm"(à ajouter dans la div principale)   formControlName="email" a ajouter à input    <div invalidmessage="email">
               <p *invalidType="'required'">Please provide email</p>
               <p *invalidType="'email'">Please provide valid email</p>
-           </div>
+           </div>-->
           </div>
           <div class="form-group">
             <label for="">Password</label>
-            <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-0" formControlName="password"required>
-            <div invalidmessage="name">
+            <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-0" required>
+      <!--      <div invalidmessage="name">
               <p *invalidType="'required'">Please provide password</p>
-            </div>
+            </div> -->
           </div>
           <div class="form-group">
             <label for="">Pseudo</label>
-            <input [(ngModel)]="registerUserData.pseudo" type="text" name="pseudo" class="form-control rounded-0" formControlName="pseudo"required>
-            <div invalidmessage="name">
+            <input [(ngModel)]="registerUserData.pseudo" type="text" name="pseudo" class="form-control rounded-0" required>
+      <!--      <div invalidmessage="name">
               <p *invalidType="'required'">Please provide name</p>
-            </div>
+            </div> -->
           </div>
           <button (click)="registerUser()" class="btn btn-primary float-right" type="button">Register</button>
         </form>

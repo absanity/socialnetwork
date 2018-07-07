@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+/*import { Directive } from '@angular/core';
 
 @Directive({
   selector: '[appInvalidtype]'
@@ -32,3 +32,4 @@ export class InvalidtypeDirective implements OnInit{
   }
 
 }
+*/

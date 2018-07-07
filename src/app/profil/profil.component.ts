@@ -24,17 +24,17 @@ export class ProfilComponent implements OnInit {
   ngOnInit() {
     console.log('profil')
     let o = {}
-    this.http.get<any>(this._profilUrl, o).subscribe(
-      res => {
-        console.log(res)
-        console.log(res['avatar'])
-        this.avatar = res['avatar']
-      }
-    )
-      ,
-      err => console.log(err)
-    )
-    //return this.http.post<any>(this._loginUrl, user)
+    this.http.get<any>("http://localhost:3000/api/events", {})
+         .subscribe(
+           res => console.log(res),
+           err => {
+             if (err instanceof HttpErrorResponse) {
+               if (err.status === 401) {
+                 this._router.navigate(['/login'])//if the token authentification failed, the user is redirect to the login page
+               }
+             }
+           }
+         )
   }
 
   modify() {

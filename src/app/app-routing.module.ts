@@ -8,6 +8,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,11 @@ const routes: Routes = [
     path: 'profil',
     component: ProfilComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path:'messages',
+    component: MessagesComponent,
+    canActivate[AuthGuard]
   },
   {
     path: '**',
