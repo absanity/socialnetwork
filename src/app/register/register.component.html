@@ -5,30 +5,33 @@
         <h3 class="mb-0">Register</h3>
       </div>
       <div class="card-body">
-        <form class="form">
-          <div class="form-group">
-            <label for="">Email</label>
-            <input [(ngModel)]="registerUserData.email" name="email" type="email" class="form-control rounded 0" required>
+        <form #registerForm="ngForm" class="form">
+          <div class="form-group" [class.has-danger]="fullMailControl.invalid && fullMailControl.touched" [class.has-success]="fullMailControl.valid">
+            <label class="control-label" for="">Email</label>
+            <input [(ngModel)]="registerUserData.email" name="email" type="email" class="form-control rounded 0" #fullMailControl="ngModel" required>
+            <span class="errors" *ngIf="fullMailControl.invalid && fullMailControl.touched">Indique ton email</span>
     <!-- [formGroup]="myForm"(à ajouter dans la div principale)   formControlName="email" a ajouter à input    <div invalidmessage="email">
               <p *invalidType="'required'">Please provide email</p>
               <p *invalidType="'email'">Please provide valid email</p>
            </div>-->
           </div>
-          <div class="form-group">
-            <label for="">Password</label>
-            <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-0" required>
+          <div class="form-group" [class.has-danger]="fullPasswordControl.invalid && fullPasswordControl.touched" [class.has-success]="fullPasswordControl.valid">
+            <label class="control-label" for="">Password</label>
+            <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-0" #fullPasswordControl="ngModel" required>
+            <span class="errors" *ngIf="fullPasswordControl.invalid && fullPasswordControl.touched">Entre un mot de passe</span>
       <!--      <div invalidmessage="name">
               <p *invalidType="'required'">Please provide password</p>
             </div> -->
           </div>
-          <div class="form-group">
-            <label for="">Pseudo</label>
-            <input [(ngModel)]="registerUserData.pseudo" type="text" name="pseudo" class="form-control rounded-0" required>
+          <div class="form-group" [class.has-danger]="fullNameControl.invalid && fullNameControl.touched " [class.has-success]="fullNameControl.valid">
+            <label class="control-label" for="">Pseudo</label>
+            <input [(ngModel)]="registerUserData.pseudo" type="text" name="pseudo" class="form-control rounded-0" #fullNameControl="ngModel" required>
+            <span class="errors" *ngIf="fullNameControl.invalid && fullNameControl.touched">Complète ton pseudo</span>
       <!--      <div invalidmessage="name">
               <p *invalidType="'required'">Please provide name</p>
             </div> -->
           </div>
-          <button (click)="registerUser()" class="btn btn-primary float-right" type="button">Register</button>
+          <button (click)="registerUser()" class="btn btn-primary float-right" type="button" [disabled]="registerForm.invalid">Register</button>
         </form>
       </div>
     </div>

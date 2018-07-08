@@ -20,7 +20,7 @@ import {MembresComponent} from './membres/membres.component';
 import {InvitationsComponent} from './invitations/invitations.component';
 import {MessagesComponent} from './messages/messages.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {ReactiveFormsModule} from '@angular/forms';
 
 import {
   MatButtonModule,
@@ -82,7 +82,8 @@ import {
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService, AuthGuard, EventService, {
     provide: HTTP_INTERCEPTORS,
