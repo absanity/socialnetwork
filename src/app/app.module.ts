@@ -6,6 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {DialogComponent} from './dialog/dialog.component';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './register/register.component';
+import {TutoWallComponent} from './tuto-wall/tuto-wall.component';
 import {LoginComponent} from './login/login.component';
 import {EventsComponent} from './events/events.component';
 import {SpecialEventsComponent} from './special-events/special-events.component';
@@ -56,6 +57,7 @@ import {
   MatTooltipModule,
   MatAutocompleteModule,
 } from '@angular/material';
+import {VariableService} from "./_services/variable.service";
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -63,6 +65,7 @@ import {
   declarations: [
     AppComponent,
     RegisterComponent,
+    TutoWallComponent,
     LoginComponent,
     EventsComponent,
     SpecialEventsComponent,
@@ -73,8 +76,8 @@ import {
     InvitationsComponent,
     MessagesComponent,
     DialogComponent,
-  //  InvalidmessageDirective,
-  //  InvalidtypeDirective
+    //  InvalidmessageDirective,
+    //  InvalidtypeDirective
   ],
   imports: [
     BrowserModule,
@@ -82,18 +85,19 @@ import {
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
+    MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuard, EventService, {
+  providers: [AuthService, AuthGuard, EventService, VariableService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
   }],
   bootstrap: [AppComponent],
   entryComponents: [
-        DialogComponent
-    ],
+    DialogComponent
+  ],
 })
 export class AppModule {
 }

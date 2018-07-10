@@ -4,3 +4,9 @@
 body {
   overflow: hidden;
 }
+
+
+.tuto-main {
+  width: 1000px;
+  margin: 20px auto;
+}

@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MessagesComponent } from './messages/messages.component';
+import {TutoWallComponent} from "./tuto-wall/tuto-wall.component";
 
 const routes: Routes = [
   {
@@ -45,7 +46,12 @@ const routes: Routes = [
   {
     path:'messages',
     component: MessagesComponent,
-    canActivate[AuthGuard]
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'tuto-wall',
+    component: TutoWallComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
