@@ -5,8 +5,8 @@ import {Router} from '@angular/router';
 @Injectable()
 export class AuthService {
 
-  private _registerUrl = "http://localhost:3000/api/register" //call to the backend API to collect the URL from registration
-  private _loginUrl = "http://localhost:3000/api/login"; // call to the backend API to collect the informations from login
+  private _registerUrl = "http://192.168.246.130:3000/api/register" //call to the backend API to collect the URL from registration
+  private _loginUrl = "http://192.168.246.130:3000/api/login"; // call to the backend API to collect the informations from login
 
   constructor(private http: HttpClient,
               private _router: Router) {

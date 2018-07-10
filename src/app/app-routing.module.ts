@@ -45,7 +45,7 @@ const routes: Routes = [
   {
     path:'messages',
     component: MessagesComponent,
-    canActivate[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

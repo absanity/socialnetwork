@@ -11,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
-  private _profilUrl = "http://localhost:3000/api/profil";
+  private _profilUrl = "http://192.168.246.130:3000/api/profil";
   dialogRef: any;
   private avatar = "";
 
@@ -24,7 +24,7 @@ export class ProfilComponent implements OnInit {
   ngOnInit() {
     console.log('profil')
     let o = {}
-    this.http.get<any>("http://localhost:3000/api/events", {})
+    this.http.get<any>("http://192.168.246.130:3000/api/events", {})
          .subscribe(
            res => console.log(res),
            err => {

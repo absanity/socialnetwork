@@ -56,6 +56,7 @@ import {
   MatTooltipModule,
   MatAutocompleteModule,
 } from '@angular/material';
+import { TutoWallComponent } from './tuto-wall/tuto-wall.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -73,6 +74,7 @@ import {
     InvitationsComponent,
     MessagesComponent,
     DialogComponent,
+    TutoWallComponent,
   //  InvalidmessageDirective,
   //  InvalidtypeDirective
   ],
