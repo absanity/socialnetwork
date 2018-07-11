@@ -88,6 +88,7 @@ import { TutoWallListComponent } from './tuto-wall-list/tuto-wall-list.component
     AppRoutingModule,
     MatDialogModule,
     MatInputModule,
+    MatCardModule,
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],

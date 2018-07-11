@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {VariableService} from "../_services/variable.service";
 
 @Component({
@@ -11,6 +11,7 @@ export class TutoWallComponent implements OnInit {
 
   wallPost: String = '';
   _wallUrl = '';
+  messages: Array<any> = []
 
   constructor(private http: HttpClient, private variable: VariableService) {
     this._wallUrl = this.variable.getMainUrl() + 'api/wall'
@@ -18,6 +19,8 @@ export class TutoWallComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadMessages();
+
   }
 
   save() {
@@ -31,7 +34,23 @@ export class TutoWallComponent implements OnInit {
     )
 
     this.wallPost = '';
+    this.loadMessages();
 
+  }
+
+  loadMessages() {
+    this.http.get<HttpResponse<any>>(
+      this._wallUrl
+    ).subscribe(data => {
+
+      console.log('res...');
+      console.log(data);
+      this.messages = Object.keys(data).map(function (key) {
+        return data[key];
+      });
+
+
+    });
   }
 
 }
