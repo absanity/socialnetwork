@@ -10,6 +10,7 @@ import { AuthGuard } from './auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MessagesComponent } from './messages/messages.component';
 import {TutoWallComponent} from "./tuto-wall/tuto-wall.component";
+import {TutoWallListComponent} from './tuto-wall-list/tuto-wall-list.component';
 
 const routes: Routes = [
   {
@@ -48,10 +49,15 @@ const routes: Routes = [
     component: MessagesComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path:'tuto-wall',
-    component: TutoWallComponent,
-    canActivate: [AuthGuard]
+    {
+        path:'tuto-wall',
+        component: TutoWallComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path:'tuto-wall-list',
+        component: TutoWallListComponent,
+        canActivate: [AuthGuard]
   },
   {
     path: '**',

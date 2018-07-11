@@ -58,6 +58,7 @@ import {
   MatAutocompleteModule,
 } from '@angular/material';
 import {VariableService} from "./_services/variable.service";
+import { TutoWallListComponent } from './tuto-wall-list/tuto-wall-list.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -76,6 +77,7 @@ import {VariableService} from "./_services/variable.service";
     InvitationsComponent,
     MessagesComponent,
     DialogComponent,
+    TutoWallListComponent,
     //  InvalidmessageDirective,
     //  InvalidtypeDirective
   ],

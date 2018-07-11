@@ -30,40 +30,7 @@ export class TutoWallComponent implements OnInit {
       }
     )
 
-    // const headers = new HttpHeaders({
-    //   'Content-Type': 'application/x-www-form-urlencoded'
-    // });
-    //
-    // const body2 = new URLSearchParams();
-    // for (let key in body) {
-    //   body2.set(key, body[key]);
-    // }
-    //
-    // this.http.post<HttpResponse<any>>(
-    //   this.mainUrl + path,
-    //   body2.toString(),
-    //   {headers, withCredentials: true}
-    // )
-    //   .subscribe(data => {
-    //     if (data['result'] == false && data['message'] == 'expired') {
-    //       this.dialogExpired();
-    //     } else {
-    //       callback(data);
-    //     }
-    //   });
-
-
-
-
-
-
     this.wallPost = '';
-
-
-
-
-
-
 
   }
 
