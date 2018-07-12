@@ -30,11 +30,12 @@ export class TutoWallComponent implements OnInit {
     this.http.post<any>(this._wallUrl, o).subscribe(
       res => {
         console.log('res.....');
+        this.wallPost = '';
+        this.loadMessages();
       }
     )
 
-    this.wallPost = '';
-    this.loadMessages();
+
 
   }
 
