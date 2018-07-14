@@ -1,0 +1,25 @@
+<div class="tuto-main">
+
+    <!--<mat-grid-list cols="6">-->
+
+        <!--<mat-grid-tile *ngFor="let member of members"-->
+                       <!--[colspan]="'1'"-->
+                       <!--[rowspan]="'1'"-->
+                       <!--[style.height]="350"-->
+                       <!--class="tile-profile"-->
+        <!--&gt;-->
+            <mat-card *ngFor="let member of members" class="member-card">
+                <mat-card-header>
+                    <mat-card-title class="link-pseudo">{{ member.pseudo }}</mat-card-title>
+                    <mat-card-subtitle class="link-email">{{ member.email }}</mat-card-subtitle>
+                </mat-card-header>
+                <img class='avatar' (click)="selectMember(member.pseudo)" mat-card-image [src]="'https://api.adorable.io/avatars/200/'+member.pseudo"
+                     alt="Photo of a Shiba Inu">
+
+            </mat-card>
+        <!--</mat-grid-tile>-->
+
+    <!--</mat-grid-list>-->
+
+
+</div>

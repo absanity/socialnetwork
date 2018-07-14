@@ -1,20 +1,22 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { EventsComponent } from './events/events.component';
-import { SpecialEventsComponent } from './special-events/special-events.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfilComponent } from './profil/profil.component';
-import { HomeComponent } from './home/home.component';
-import { AuthGuard } from './auth.guard';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MessagesComponent } from './messages/messages.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {EventsComponent} from './events/events.component';
+import {SpecialEventsComponent} from './special-events/special-events.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {ProfilComponent} from './profil/profil.component';
+import {HomeComponent} from './home/home.component';
+import {AuthGuard} from './auth.guard';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {MessagesComponent} from './messages/messages.component';
 import {TutoWallComponent} from "./tuto-wall/tuto-wall.component";
 import {TutoWallListComponent} from './tuto-wall-list/tuto-wall-list.component';
+import {TutoProfileComponent} from "./tuto-profile/tuto-profile.component";
+import {TutoMembersComponent} from "./tuto-members/tuto-members.component";
 
 const routes: Routes = [
   {
-    path:'home',
+    path: 'home',
     component: HomeComponent
   },
   {
@@ -45,19 +47,29 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path:'messages',
+    path: 'messages',
     component: MessagesComponent,
     canActivate: [AuthGuard]
   },
-    {
-        path:'tuto-wall',
-        component: TutoWallComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path:'tuto-wall-list',
-        component: TutoWallListComponent,
-        canActivate: [AuthGuard]
+  {
+    path: 'tuto-wall',
+    component: TutoWallComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'tuto-wall-list',
+    component: TutoWallListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'tuto-profile',
+    component: TutoProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'tuto-members',
+    component: TutoMembersComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
@@ -69,4 +81,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

@@ -34,9 +34,6 @@ export class TutoWallComponent implements OnInit {
         this.loadMessages();
       }
     )
-
-
-
   }
 
   loadMessages() {

@@ -57,8 +57,15 @@ import {
   MatTooltipModule,
   MatAutocompleteModule,
 } from '@angular/material';
+
+
 import {VariableService} from "./_services/variable.service";
 import { TutoWallListComponent } from './tuto-wall-list/tuto-wall-list.component';
+import { TutoProfileComponent } from './tuto-profile/tuto-profile.component';
+import { TutoMembersComponent } from './tuto-members/tuto-members.component';
+import { TutoProfileFriendsComponent } from './tuto-profile-friends/tuto-profile-friends.component';
+import { TutoProfileWallComponent } from './tuto-profile-wall/tuto-profile-wall.component';
+import { TutoProfileInfosComponent } from './tuto-profile-infos/tuto-profile-infos.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -78,6 +85,11 @@ import { TutoWallListComponent } from './tuto-wall-list/tuto-wall-list.component
     MessagesComponent,
     DialogComponent,
     TutoWallListComponent,
+    TutoProfileComponent,
+    TutoMembersComponent,
+    TutoProfileFriendsComponent,
+    TutoProfileWallComponent,
+    TutoProfileInfosComponent,
     //  InvalidmessageDirective,
     //  InvalidtypeDirective
   ],
@@ -90,7 +102,8 @@ import { TutoWallListComponent } from './tuto-wall-list/tuto-wall-list.component
     MatInputModule,
     MatCardModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule,
   ],
   providers: [AuthService, AuthGuard, EventService, VariableService, {
     provide: HTTP_INTERCEPTORS,

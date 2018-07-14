@@ -9,4 +9,10 @@ body {
 .tuto-main {
   width: 1000px;
   margin: 20px auto;
+  /*background-color: beige;*/
+  /*height: 1000px;*/
+}
+
+.mat-card.card-infos:not([class*=mat-elevation-z]) {
+  box-shadow: none!important;
 }
