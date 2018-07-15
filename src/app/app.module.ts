@@ -3,24 +3,31 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
-import {DialogComponent} from './dialog/dialog.component';
-import {AppComponent} from './app.component';
-import {RegisterComponent} from './register/register.component';
-import {LoginComponent} from './login/login.component';
-import {EventsComponent} from './events/events.component';
-import {SpecialEventsComponent} from './special-events/special-events.component';
-import {AuthService} from './_services/auth.service';
-import {EventService} from './_services/event.service';
-import {AuthGuard} from './auth.guard';
-import {TokenInterceptorService} from './_services/token-interceptor.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from '@angular/forms';
+
+///// COMPONENTS /////
 import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ProfilComponent} from './profil/profil.component';
 import {MembresComponent} from './membres/membres.component';
 import {InvitationsComponent} from './invitations/invitations.component';
 import {MessagesComponent} from './messages/messages.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ReactiveFormsModule} from '@angular/forms';
+import {DialogComponent} from './dialog/dialog.component';
+import {AppComponent} from './app.component';
+import {RegisterComponent} from './register/register.component';
+import {LoginComponent} from './login/login.component';
+import {EventsComponent} from './events/events.component';
+import {SpecialEventsComponent} from './special-events/special-events.component';
+import {ResetpasswordComponent} from './resetpassword/resetpassword.component';
+
+///// SERVICES /////
+import {UserService} from './_services/user.service';
+import {AuthService} from './_services/auth.service';
+import {EventService} from './_services/event.service';
+import {TokenInterceptorService} from './_services/token-interceptor.service';
+import {AuthGuard} from './auth.guard';
+
 
 import {
   MatButtonModule,
@@ -56,6 +63,8 @@ import {
   MatTooltipModule,
   MatAutocompleteModule,
 } from '@angular/material';
+import { SendComponent } from './send/send.component';
+//import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -73,6 +82,8 @@ import {
     InvitationsComponent,
     MessagesComponent,
     DialogComponent,
+    SendComponent,
+    ResetpasswordComponent,
   //  InvalidmessageDirective,
   //  InvalidtypeDirective
   ],
@@ -85,7 +96,7 @@ import {
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuard, EventService, {
+  providers: [AuthService, AuthGuard, EventService, UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

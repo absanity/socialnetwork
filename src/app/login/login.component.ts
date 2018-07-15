@@ -22,11 +22,12 @@ export class LoginComponent implements OnInit {
     this._auth.loginUser(this.loginUserData)
       .subscribe(
         res => {
-          console.log(res),
+        console.log('test1')
+        console.log(res)
             localStorage.setItem('token', res['token'])
           this._router.navigate(['/special'])//redirect the user to this route when the connexion is successfull
         },
-        err => console.log(err)
+        err => console.log('test2')
       )
   }
 
