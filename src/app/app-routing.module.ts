@@ -13,6 +13,7 @@ import {TutoWallComponent} from "./tuto-wall/tuto-wall.component";
 import {TutoWallListComponent} from './tuto-wall-list/tuto-wall-list.component';
 import {TutoProfileComponent} from "./tuto-profile/tuto-profile.component";
 import {TutoMembersComponent} from "./tuto-members/tuto-members.component";
+import {TutoInvitationsComponent} from "./tuto-invitations/tuto-invitations.component";
 
 const routes: Routes = [
   {
@@ -69,6 +70,11 @@ const routes: Routes = [
   {
     path: 'tuto-members',
     component: TutoMembersComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'tuto-invitations',
+    component: TutoInvitationsComponent,
     canActivate: [AuthGuard]
   },
   {

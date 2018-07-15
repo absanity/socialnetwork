@@ -30,8 +30,6 @@ export class TutoProfileWallComponent implements OnInit {
   }
 
   save() {
-    console.log('save...');
-    console.log(this.wallPost);
     let o = { message: this.wallPost, pseudo: this._pseudo }
     this.http.post<any>(this._wallUrl, o).subscribe(
       res => {
@@ -46,9 +44,6 @@ export class TutoProfileWallComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._wallUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(data => {
-
-      console.log('res...');
-      console.log(data);
       this.messages = Object.keys(data).map(function (key) {
         return data[key];
       });

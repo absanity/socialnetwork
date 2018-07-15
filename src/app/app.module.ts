@@ -66,6 +66,7 @@ import { TutoMembersComponent } from './tuto-members/tuto-members.component';
 import { TutoProfileFriendsComponent } from './tuto-profile-friends/tuto-profile-friends.component';
 import { TutoProfileWallComponent } from './tuto-profile-wall/tuto-profile-wall.component';
 import { TutoProfileInfosComponent } from './tuto-profile-infos/tuto-profile-infos.component';
+import { TutoInvitationsComponent } from './tuto-invitations/tuto-invitations.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -90,6 +91,7 @@ import { TutoProfileInfosComponent } from './tuto-profile-infos/tuto-profile-inf
     TutoProfileFriendsComponent,
     TutoProfileWallComponent,
     TutoProfileInfosComponent,
+    TutoInvitationsComponent,
     //  InvalidmessageDirective,
     //  InvalidtypeDirective
   ],
