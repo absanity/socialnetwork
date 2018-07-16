@@ -16,7 +16,6 @@ import {MessagesComponent} from './messages/messages.component';
 import {DialogComponent} from './dialog/dialog.component';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './register/register.component';
-import {TutoWallComponent} from './tuto-wall/tuto-wall.component';
 import {LoginComponent} from './login/login.component';
 import {EventsComponent} from './events/events.component';
 import {SpecialEventsComponent} from './special-events/special-events.component';
@@ -69,13 +68,12 @@ import { SendComponent } from './send/send.component';
 
 
 import {VariableService} from "./_services/variable.service";
-import { TutoWallListComponent } from './tuto-wall-list/tuto-wall-list.component';
-import { TutoProfileComponent } from './tuto-profile/tuto-profile.component';
-import { TutoMembersComponent } from './tuto-members/tuto-members.component';
-import { TutoProfileFriendsComponent } from './tuto-profile-friends/tuto-profile-friends.component';
-import { TutoProfileWallComponent } from './tuto-profile-wall/tuto-profile-wall.component';
-import { TutoProfileInfosComponent } from './tuto-profile-infos/tuto-profile-infos.component';
-import { TutoInvitationsComponent } from './tuto-invitations/tuto-invitations.component';
+import { WallComponent } from './wall/wall.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MembersComponent } from './members/members.component';
+import { ProfileWallComponent } from './profile-wall/profile-wall.component';
+import { ProfileInfosComponent } from './profile-infos/profile-infos.component';
+import { ProfileFriendsComponent } from './profile-friends/profile-friends.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -83,7 +81,6 @@ import { TutoInvitationsComponent } from './tuto-invitations/tuto-invitations.co
   declarations: [
     AppComponent,
     RegisterComponent,
-    TutoWallComponent,
     SendComponent,
     ResetpasswordComponent,
     LoginComponent,
@@ -97,13 +94,12 @@ import { TutoInvitationsComponent } from './tuto-invitations/tuto-invitations.co
     MessagesComponent,
     DialogComponent,
 
-    TutoWallListComponent,
-    TutoProfileComponent,
-    TutoMembersComponent,
-    TutoProfileFriendsComponent,
-    TutoProfileWallComponent,
-    TutoProfileInfosComponent,
-    TutoInvitationsComponent,
+    WallComponent,
+    ProfileComponent,
+    MembersComponent,
+    ProfileWallComponent,
+    ProfileInfosComponent,
+    ProfileFriendsComponent,
     //  InvalidmessageDirective,
     //  InvalidtypeDirective
   ],
@@ -113,6 +109,7 @@ import { TutoInvitationsComponent } from './tuto-invitations/tuto-invitations.co
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
+    MatChipsModule,
     MatInputModule,
     MatCardModule,
     BrowserAnimationsModule,

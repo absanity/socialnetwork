@@ -4,11 +4,11 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-tuto-members',
-  templateUrl: './tuto-members.component.html',
-  styleUrls: ['./tuto-members.component.css']
+  selector: 'app-members',
+  templateUrl: './members.component.html',
+  styleUrls: ['./members.component.css']
 })
-export class TutoMembersComponent implements OnInit {
+export class MembersComponent implements OnInit {
 
   _membersUrl = ''
   private members: Array<any>;
@@ -41,7 +41,7 @@ export class TutoMembersComponent implements OnInit {
 
   selectMember(pseudo: String) {
     console.log('selectMember ... ' + pseudo);
-    this.router.navigate(['/tuto-profile'], { queryParams: { pseudo: pseudo }})
+    this.router.navigate(['/profile'], { queryParams: { pseudo: pseudo }})
   }
 
 }

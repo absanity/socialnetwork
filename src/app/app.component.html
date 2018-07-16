@@ -8,27 +8,27 @@
   <div class="collapse navbar-collapse" id="navbarContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/events" routerLinkActive="active">Events</a>
+        <a class="nav-link" routerLink="/wall" routerLinkActive="active">Actualités</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink= "/special" routerLinkActive="active">Members</a>
+        <a class="nav-link" routerLink= "/members" routerLinkActive="active">Members</a>
       </li>
     </ul>
     <ul class="navbar-nav">
       <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">login</a>
       <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
       <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">Logout</a>
-      <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.LogoutUser()" routerLink="/profil" routerLinkActive="active">Mon profil</a>
+      <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.LogoutUser()" routerLink="/profile" routerLinkActive="active">Mon profil</a>
     </ul>
   </div>
 </nav>
 <div class="background">
-  <div class="tuto-menu">
-    <a href="/tuto-wall">tuto-wall</a>
-    <a href="/tuto-profile">tuto-profile</a>
-    <a href="/tuto-members">tuto-members</a>
-    <a href="/tuto-invitations">tuto-invitations</a>
-  </div>
+  <!--<div class="tuto-menu">-->
+    <!--<a href="/profile">profile</a>-->
+    <!--<a href="/members">members</a>-->
+    <!--<a href="/invitations">invitations</a>-->
+    <!--<a href="/wall">wall</a>-->
+  <!--</div>-->
 
   <router-outlet></router-outlet>
 </div>

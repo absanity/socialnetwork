@@ -4,11 +4,11 @@ import {VariableService} from "../_services/variable.service";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
-  selector: 'app-tuto-profile-infos',
-  templateUrl: './tuto-profile-infos.component.html',
-  styleUrls: ['./tuto-profile-infos.component.css']
+  selector: 'app-profile-infos',
+  templateUrl: './profile-infos.component.html',
+  styleUrls: ['./profile-infos.component.css']
 })
-export class TutoProfileInfosComponent implements OnInit {
+export class ProfileInfosComponent implements OnInit {
 
   _pseudo = ''
   _profileInfosUrl = ''

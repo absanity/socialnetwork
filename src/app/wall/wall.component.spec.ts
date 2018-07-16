@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TutoWallComponent } from './tuto-wall.component';
+import { WallComponent } from './wall.component';
 
-describe('TutoWallComponent', () => {
-  let component: TutoWallComponent;
-  let fixture: ComponentFixture<TutoWallComponent>;
+describe('WallComponent', () => {
+  let component: WallComponent;
+  let fixture: ComponentFixture<WallComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TutoWallComponent ]
+      declarations: [ WallComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TutoWallComponent);
+    fixture = TestBed.createComponent(WallComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

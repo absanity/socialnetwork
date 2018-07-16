@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TutoWallListComponent } from './tuto-wall-list.component';
+import { ProfileFriendsComponent } from './profile-friends.component';
 
-describe('TutoWallListComponent', () => {
-  let component: TutoWallListComponent;
-  let fixture: ComponentFixture<TutoWallListComponent>;
+describe('ProfileFriendsComponent', () => {
+  let component: ProfileFriendsComponent;
+  let fixture: ComponentFixture<ProfileFriendsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TutoWallListComponent ]
+      declarations: [ ProfileFriendsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TutoWallListComponent);
+    fixture = TestBed.createComponent(ProfileFriendsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,3 +1,50 @@
-<p>
-  invitations works!
-</p>
+<div class="tuto-main">
+
+  <mat-chip-list>
+    <mat-chip routerLink="/profile">Mon profil</mat-chip>
+    <mat-chip color="accent" selected>Invitations</mat-chip>
+  </mat-chip-list>
+
+  <br/>
+  <br/>
+
+  <mat-card *ngFor="let o of invitations">
+
+    <mat-card-header>
+      <div mat-card-avatar [ngStyle]="{'background-image':'url(http://api.adorable.io/avatars/20/'+o.pseudo+')'}"></div>
+      <mat-card-title>{{ o.pseudo }}</mat-card-title>
+      <mat-card-subtitle>
+        <div *ngIf="o.typeRelationship == 1">
+          <div *ngIf="o.accepted">
+            Invitation envoyée -- Acceptée
+            <br/>
+            <button mat-button (click)="deleteRelationship(o.pseudo)">Supprimer la relation</button>
+          </div>
+          <div *ngIf="!o.accepted">
+            Invitation envoyée
+            <br/>
+            <button mat-button (click)="cancelInvitation(o.pseudo)">Annuler l'invitation</button>
+          </div>
+        </div>
+        <div *ngIf="o.typeRelationship == 2">
+          <div *ngIf="o.accepted">
+            Invitation reçue -- Acceptée
+            <br/>
+            <button mat-button (click)="deleteRelationship(o.pseudo)">Supprimer la relation</button>
+          </div>
+          <div *ngIf="!o.accepted">
+            Invitation reçue
+            <br/>
+            <button mat-button (click)="acceptInvitation(o.pseudo)">Accepter l'invitation</button>
+          </div>
+        </div>
+      </mat-card-subtitle>
+
+      <!--<mat-card-subtitle>{{ o.userSource.email }}</mat-card-subtitle>-->
+    </mat-card-header>
+
+
+  </mat-card>
+
+
+</div>

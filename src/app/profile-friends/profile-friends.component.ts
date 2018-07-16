@@ -4,11 +4,11 @@ import {VariableService} from "../_services/variable.service";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 
 @Component({
-  selector: 'app-tuto-profile-friends',
-  templateUrl: './tuto-profile-friends.component.html',
-  styleUrls: ['./tuto-profile-friends.component.css']
+  selector: 'app-profile-friends',
+  templateUrl: './profile-friends.component.html',
+  styleUrls: ['./profile-friends.component.css']
 })
-export class TutoProfileFriendsComponent implements OnInit {
+export class ProfileFriendsComponent implements OnInit {
 
   _pseudo = ''
   _friendsListUrl = ''

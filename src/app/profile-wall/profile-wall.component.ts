@@ -4,11 +4,11 @@ import {VariableService} from "../_services/variable.service";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
-  selector: 'app-tuto-profile-wall',
-  templateUrl: './tuto-profile-wall.component.html',
-  styleUrls: ['./tuto-profile-wall.component.css']
+  selector: 'app-profile-wall',
+  templateUrl: './profile-wall.component.html',
+  styleUrls: ['./profile-wall.component.css']
 })
-export class TutoProfileWallComponent implements OnInit {
+export class ProfileWallComponent implements OnInit {
 
   wallPost: String = '';
   _pseudo = ''

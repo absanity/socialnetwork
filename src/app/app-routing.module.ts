@@ -11,11 +11,10 @@ import {ProfilComponent} from './profil/profil.component';
 import {HomeComponent} from './home/home.component';
 import {AuthGuard} from './auth.guard';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {TutoWallComponent} from "./tuto-wall/tuto-wall.component";
-import {TutoWallListComponent} from './tuto-wall-list/tuto-wall-list.component';
-import {TutoProfileComponent} from "./tuto-profile/tuto-profile.component";
-import {TutoMembersComponent} from "./tuto-members/tuto-members.component";
-import {TutoInvitationsComponent} from "./tuto-invitations/tuto-invitations.component";
+import {InvitationsComponent} from "./invitations/invitations.component";
+import {WallComponent} from "./wall/wall.component";
+import {ProfileComponent} from "./profile/profile.component";
+import {MembersComponent} from "./members/members.component";
 
 const routes: Routes = [
   {
@@ -64,28 +63,23 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'tuto-wall',
-    component: TutoWallComponent,
+    path: 'members',
+    component: MembersComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'tuto-wall-list',
-    component: TutoWallListComponent,
+    path: 'invitations',
+    component: InvitationsComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'tuto-profile',
-    component: TutoProfileComponent,
+    path: 'wall',
+    component: WallComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'tuto-members',
-    component: TutoMembersComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'tuto-invitations',
-    component: TutoInvitationsComponent,
+    path: 'profile',
+    component: ProfileComponent,
     canActivate: [AuthGuard]
   },
   {

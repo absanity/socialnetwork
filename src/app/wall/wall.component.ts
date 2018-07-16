@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {VariableService} from "../_services/variable.service";
 
 @Component({
-  selector: 'app-tuto-wall-list',
-  templateUrl: './tuto-wall-list.component.html',
-  styleUrls: ['./tuto-wall-list.component.css']
+  selector: 'app-wall',
+  templateUrl: './wall.component.html',
+  styleUrls: ['./wall.component.css']
 })
-export class TutoWallListComponent implements OnInit {
+export class WallComponent implements OnInit {
 
-  _wallUrl = ''
+  wallPost: String = '';
+  _wallUrl = '';
   messages: Array<any> = []
 
   constructor(private http: HttpClient, private variable: VariableService) {
@@ -19,6 +20,20 @@ export class TutoWallListComponent implements OnInit {
 
   ngOnInit() {
     this.loadMessages();
+
+  }
+
+  save() {
+    console.log('save...');
+    console.log(this.wallPost);
+    let o = { message: this.wallPost }
+    this.http.post<any>(this._wallUrl, o).subscribe(
+      res => {
+        console.log('res.....');
+        this.wallPost = '';
+        this.loadMessages();
+      }
+    )
   }
 
   loadMessages() {
@@ -35,4 +50,5 @@ export class TutoWallListComponent implements OnInit {
 
     });
   }
+
 }
