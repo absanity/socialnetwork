@@ -16,7 +16,6 @@ import {TutoWallListComponent} from './tuto-wall-list/tuto-wall-list.component';
 import {TutoProfileComponent} from "./tuto-profile/tuto-profile.component";
 import {TutoMembersComponent} from "./tuto-members/tuto-members.component";
 import {TutoInvitationsComponent} from "./tuto-invitations/tuto-invitations.component";
-import {SendComponent} from './send/send.component';
 
 const routes: Routes = [
   {
