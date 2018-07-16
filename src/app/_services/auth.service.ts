@@ -1,15 +1,20 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {VariableService} from "./variable.service";
 
 @Injectable()
 export class AuthService {
 
-  private _registerUrl = "http://localhost:3000/api/register" //call to the backend API to collect the URL from registration
-  private _loginUrl = "http://localhost:3000/api/login"; // call to the backend API to collect the informations from login
+  private _registerUrl = "" //call to the backend API to collect the URL from registration
+  private _loginUrl = ""; // call to the backend API to collect the informations from login
 
   constructor(private http: HttpClient,
-              private _router: Router) {
+              private _router: Router,
+              private _variable: VariableService) {
+    this._registerUrl = this._variable.getMainUrl() + 'api/register'
+    this._loginUrl = this._variable.getMainUrl() + 'api/login'
+
   }
 
   registerUser(user) {

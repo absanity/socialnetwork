@@ -1,0 +1,29 @@
+.member-card {
+    /*position: absolute;*/
+    /*left: 0px;*/
+    /*top: 0px;*/
+    padding: 0px;
+    margin-top: 0px!important;
+    height: 350px!important;
+    width: 190px!important;
+    float: left;
+    overflow: hidden;
+    margin: 0px 10px 10px 0px;
+    /*display: inline-block;*/
+
+}
+
+.avatar {
+    cursor: pointer;
+}
+
+.link-pseudo,
+.link-email {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-pseudo:hover,
+.link-email:hover {
+    text-decoration: none;
+}

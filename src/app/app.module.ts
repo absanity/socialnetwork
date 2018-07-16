@@ -16,6 +16,7 @@ import {MessagesComponent} from './messages/messages.component';
 import {DialogComponent} from './dialog/dialog.component';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './register/register.component';
+import {TutoWallComponent} from './tuto-wall/tuto-wall.component';
 import {LoginComponent} from './login/login.component';
 import {EventsComponent} from './events/events.component';
 import {SpecialEventsComponent} from './special-events/special-events.component';
@@ -64,7 +65,17 @@ import {
   MatAutocompleteModule,
 } from '@angular/material';
 import { SendComponent } from './send/send.component';
-//import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+
+
+
+import {VariableService} from "./_services/variable.service";
+import { TutoWallListComponent } from './tuto-wall-list/tuto-wall-list.component';
+import { TutoProfileComponent } from './tuto-profile/tuto-profile.component';
+import { TutoMembersComponent } from './tuto-members/tuto-members.component';
+import { TutoProfileFriendsComponent } from './tuto-profile-friends/tuto-profile-friends.component';
+import { TutoProfileWallComponent } from './tuto-profile-wall/tuto-profile-wall.component';
+import { TutoProfileInfosComponent } from './tuto-profile-infos/tuto-profile-infos.component';
+import { TutoInvitationsComponent } from './tuto-invitations/tuto-invitations.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -72,6 +83,9 @@ import { SendComponent } from './send/send.component';
   declarations: [
     AppComponent,
     RegisterComponent,
+    TutoWallComponent,
+    SendComponent,
+    ResetpasswordComponent,
     LoginComponent,
     EventsComponent,
     SpecialEventsComponent,
@@ -82,10 +96,16 @@ import { SendComponent } from './send/send.component';
     InvitationsComponent,
     MessagesComponent,
     DialogComponent,
-    SendComponent,
-    ResetpasswordComponent,
-  //  InvalidmessageDirective,
-  //  InvalidtypeDirective
+
+    TutoWallListComponent,
+    TutoProfileComponent,
+    TutoMembersComponent,
+    TutoProfileFriendsComponent,
+    TutoProfileWallComponent,
+    TutoProfileInfosComponent,
+    TutoInvitationsComponent,
+    //  InvalidmessageDirective,
+    //  InvalidtypeDirective
   ],
   imports: [
     BrowserModule,
@@ -93,18 +113,22 @@ import { SendComponent } from './send/send.component';
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
+    MatInputModule,
+    MatCardModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule,
   ],
-  providers: [AuthService, AuthGuard, EventService, UserService, {
+
+  providers: [AuthService, AuthGuard, EventService, VariableService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
   }],
   bootstrap: [AppComponent],
   entryComponents: [
-        DialogComponent
-    ],
+    DialogComponent
+  ],
 })
 export class AppModule {
 }

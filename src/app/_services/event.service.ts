@@ -1,15 +1,18 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {VariableService} from "./variable.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  private _eventsUrl = 'http://localhost:3000/api/events';
-  private _specialEventUrl = 'http://localhost:3000/api/special';
+  private _eventsUrl = '';
+  private _specialEventUrl = '';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private variable: VariableService ) {
+    this._eventsUrl = variable.getMainUrl() + 'api/events'
+    this._specialEventUrl = variable.getMainUrl() + 'api/special'
   }
 
   getEvents() {

@@ -1,0 +1,45 @@
+<mat-card class="card-infos">
+  <mat-card-header>
+    <!--<div mat-card-avatar class="example-header-image"></div>-->
+    <mat-card-title>{{ infos.pseudo }}</mat-card-title>
+    <mat-card-subtitle>{{ infos.email }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="'https://api.adorable.io/avatars/200/'+infos.pseudo" [alt]="infos.pseudo">
+  <mat-card-content>
+    <p>
+      <!--The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.-->
+      <!--A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally-->
+      <!--bred for hunting.-->
+    </p>
+  </mat-card-content>
+  <mat-card-actions style="text-align: center;">
+    <div *ngIf="infos.typeRelationship == 1">
+      <div *ngIf="infos.accepted">
+        Invitation envoyée -- Acceptée
+        <br/>
+        <button mat-button (click)="deleteRelationship()">Supprimer la relation</button>
+      </div>
+      <div *ngIf="!infos.accepted">
+        Invitation envoyée
+        <br/>
+        <button mat-button (click)="cancelInvitation()">Annuler l'invitation</button>
+      </div>
+    </div>
+    <div *ngIf="infos.typeRelationship == 2">
+      <div *ngIf="infos.accepted">
+        Invitation reçue -- Acceptée
+        <br/>
+        <button mat-button (click)="deleteRelationship()">Supprimer la relation</button>
+      </div>
+      <div *ngIf="!infos.accepted">
+        Invitation reçue
+        <br/>
+        <button mat-button (click)="acceptInvitation()">Accepter l'invitation</button>
+      </div>
+    </div>
+    <div *ngIf="infos.typeRelationship == 0">
+      <button mat-button (click)="invite()">Inviter</button>
+    </div>
+    <!--<button mat-button>SHARE</button>-->
+  </mat-card-actions>
+</mat-card>

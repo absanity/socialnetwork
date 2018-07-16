@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-//import * as io from 'socket.io-client';
+// import * as io from 'socket.io-client';
 
 
 @Component({
@@ -24,6 +24,7 @@ export class MessagesComponent implements OnInit {
 
   ) {
   //  this.socket = io();
+
     // this.webSocketService.newMessageReceived().subscribe(data => {
     //   this.messageArray.push(data);
     //   this.isTyping = false;
