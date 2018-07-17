@@ -117,7 +117,7 @@ import { ProfileFriendsComponent } from './profile-friends/profile-friends.compo
     MatGridListModule,
   ],
 
-  providers: [AuthService, AuthGuard, EventService, VariableService, {
+  providers: [AuthService, AuthGuard, EventService, VariableService, UserService{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
