@@ -60,7 +60,7 @@ const routes: Routes = [
   {
     path: 'resetpassword',
     component: ResetpasswordComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'members',
