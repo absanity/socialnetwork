@@ -5,11 +5,18 @@ import { User } from '../interfaces/user'; // typescript file used to check if t
 @Injectable()
 export class UserService {
 
-  private _resetpassword: string = "http://localhost:3000/api/resetpassword"
+  private _resetpassword: string = "http://localhost:3000/api/resetpassword";
+  private _uploadUrl: string = "http://localhost:3000/api/upload";
 
   constructor(
     private _http: HttpClient
   ) { }
+
+  public uploadFile(selectedFile: File) {
+    const fd = new FormData();
+    fd.append('image', selectedFile, selectedFile.name);
+    return this._http.post<any>(this._uploadUrl, fd)
+  }
 
   public resetpassword(email){
     return this._http.post<any>(this._resetpassword, email)

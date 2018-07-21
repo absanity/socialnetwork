@@ -10,7 +10,7 @@
           <div class="form-group" [class.has-danger]="fullMailControl.invalid && fullMailControl.touched" [class.has-success]="fullMailControl.valid">
             <label class="control-label" for="">Email</label>
             <input [(ngModel)]="registerUserData.email" name="email" type="email" class="form-control rounded 0" #fullMailControl="ngModel" required>
-            <span class="errors" *ngIf="fullMailControl.invalid && fullMailControl.touched">Indique ton email</span>
+            <span class="errors" *ngIf="fullMailControl.invalid && fullMailControl.touched">Write your email</span>
     <!-- [formGroup]="myForm"(à ajouter dans la div principale)   formControlName="email" a ajouter à input    <div invalidmessage="email">
               <p *invalidType="'required'">Please provide email</p>
               <p *invalidType="'email'">Please provide valid email</p>
@@ -19,18 +19,75 @@
           <div class="form-group" [class.has-danger]="fullPasswordControl.invalid && fullPasswordControl.touched" [class.has-success]="fullPasswordControl.valid">
             <label class="control-label" for="">Password</label>
             <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-0" #fullPasswordControl="ngModel" required>
-            <span class="errors" *ngIf="fullPasswordControl.invalid && fullPasswordControl.touched">Entre un mot de passe</span>
+            <span class="errors" *ngIf="fullPasswordControl.invalid && fullPasswordControl.touched">Provide a password</span>
       <!--      <div invalidmessage="name">
               <p *invalidType="'required'">Please provide password</p>
             </div> -->
           </div>
-          <div class="form-group" [class.has-danger]="fullNameControl.invalid && fullNameControl.touched " [class.has-success]="fullNameControl.valid">
+          <div class="form-group" [class.has-danger]="fullPseudoControl.invalid && fullPseudoControl.touched " [class.has-success]="fullPseudoControl.valid">
             <label class="control-label" for="">Pseudo</label>
-            <input [(ngModel)]="registerUserData.pseudo" type="text" name="pseudo" class="form-control rounded-0" #fullNameControl="ngModel" required>
-            <span class="errors" *ngIf="fullNameControl.invalid && fullNameControl.touched">Complète ton pseudo</span>
+            <input [(ngModel)]="registerUserData.pseudo" type="text" name="pseudo" class="form-control rounded-0" #fullPseudoControl="ngModel" required>
+            <span class="errors" *ngIf="fullPseudoControl.invalid && fullPseudoControl.touched">Choose a pseudo</span>
       <!--      <div invalidmessage="name">
               <p *invalidType="'required'">Please provide name</p>
             </div> -->
+          </div>
+          <div class="form-group" [class.has-danger]="fullNameControl.invalid && fullNameControl.touched" [class.has-success]="fullNameControl.valid">
+            <label class="control-label" for="">Name</label>
+            <input [(ngModel)]="registerUserData.nom" name="nom" type="nom" class="form-control rounded-0" #fullNameControl="ngModel" required>
+            <span class="errors" *ngIf="fullNameControl.invalid && fullNameControl.touched">Give your name</span>
+          </div>
+          <div class="form-group" [class.has-danger]="fullSurnameControl.invalid && fullSurnameControl.touched" [class.has-success]="fullSurnameControl.valid">
+            <label class="control-label" for="">Surname</label>
+            <input [(ngModel)]="registerUserData.surname" name="surname" type="surname" class="form-control rounded-0" #fullSurnameControl="ngModel" required>
+            <span class="errors" *ngIf="fullSurnameControl.invalid && fullSurnameControl.touched">Add your surname</span>
+          </div>
+          <div class="form-group" [class.has-danger]="fullAgeControl.invalid && fullAgeControl.touched" [class.has-success]="fullAgeControl.valid">
+            <label class="control-label" for="">Age</label>
+            <input [(ngModel)]="registerUserData.age" name="age" type="age" class="form-control rounded-0" #fullAgeControl="ngModel" required>
+            <span class="errors" *ngIf="fullAgeControl.invalid && fullAgeControl.touched">Tell us your age</span>
+          </div>
+          <div class="form-group" [class.has-danger]="fullCityControl.invalid && fullCityControl.touched" [class.has-success]="fullCityControl.valid">
+            <label class="control-label" for="">City</label>
+            <input [(ngModel)]="registerUserData.city" name="city" type="city" class="form-control rounded-0" #fullCityControl="ngModel" required>
+            <span class="errors" *ngIf="fullCityControl.invalid && fullCityControl.touched">Enter your city</span>
+          </div>
+          <div class="form-group" [class.has-danger]="fullGenderControl.invalid && fullGenderControl.touched" [class.has-success]="fullGenderControl.valid">
+            <label class="control-label" for="">Gender</label>
+            <input [(ngModel)]="registerUserData.gender" name="gender" type="gender" class="form-control rounded-0" #fullGenderControl="ngModel" required>
+            <span class="errors" *ngIf="fullGenderControl.invalid && fullGenderControl.touched">Give us your gender</span>
+          </div>
+          <fieldset class="form-group">
+            <legend>Choose your preferences</legend>
+            <div class="form-check">
+              <input [(ngModel)]="registerUserData.preferences.sustainable" name="sustainable" type="checkbox" class="form-check-input" #fullSustainableControl="ngModel">
+              <label class="control-label form-check-label">sustainable development</label>
+            </div>
+            <div class="form-check">
+              <input [(ngModel)]="registerUserData.preferences.social" name="social" type="checkbox" class="form-check-input" #fullSocialControl="ngModel">
+              <label class="control-label form-check-label">Social projects</label>
+            </div>
+            <div class="form-check">
+              <input [(ngModel)]="registerUserData.preferences.living" name="living" type="checkbox" class="form-check-input" #fullLivingControl="ngModel">
+              <label class="control-label form-check-label" for="">Green living</label>
+            </div>
+            <div class="form-check">
+              <input [(ngModel)]="registerUserData.preferences.fort" name="fort" type="checkbox" class="form-check-input" #fullFortControl="ngModel">
+              <label class="control-label form-check-label" for="">Fort history</label>
+            </div>
+            <div class="form-check">
+              <input [(ngModel)]="registerUserData.preferences.coworking" name="coworking" type="checkbox" class="form-check-input" #fullCoworkingControl="ngModel">
+              <label class="control-label form-check-label">Coworking</label>
+            </div>
+            <div class="form-check">
+              <input [(ngModel)]="registerUserData.preferences.events" name="events" type="checkbox" class="form-check-input" #fullEventsControl="ngModel">
+              <label class="control-label form-check-label">Events</label>
+            </div>
+          </fieldset>
+          <div class="form-group" [class.has-danger]="fullSummaryControl.invalid && fullSummaryControl.touched" [class.has-success]="fullSummaryControl.valid">
+            <label class="control-label" for="">Summary</label>
+            <input [(ngModel)]="registerUserData.summary" name="summary" type="summary" class="form-control rounded-0" #fullSummaryControl="ngModel" required>
+            <span class="errors" *ngIf="fullSummaryControl.invalid && fullSummaryControl.touched">Write about you</span>
           </div>
           <button (click)="registerUser()" class="btn btn-primary float-right" type="submit" [disabled]="registerForm.invalid">Register</button>
         </form>
