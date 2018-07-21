@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-// import * as io from 'socket.io-client';
-
+import { Router, ActivatedRoute } from '@angular/router';
+// import { UserService } from './../user.service';
+import { Component, OnInit } from '@angular/core';
+import {WebsocketService} from "../_services/websocket.service";
+import {UserService} from "../_services/user.service";
 
 @Component({
   selector: 'app-messages',
@@ -15,16 +16,13 @@ export class MessagesComponent implements OnInit {
   private message: String;
   messageArray: Array<{user: String, message: String}> = [];
   private isTyping = false;
-  //socket;
+
   constructor(
     private route: ActivatedRoute,
-    // private webSocketService: WebsocketService,
-    // private userService: UserService,
+    private webSocketService: WebsocketService,
+    private userService: UserService,
     private router: Router
-
   ) {
-  //  this.socket = io();
-
     // this.webSocketService.newMessageReceived().subscribe(data => {
     //   this.messageArray.push(data);
     //   this.isTyping = false;
@@ -32,7 +30,6 @@ export class MessagesComponent implements OnInit {
     // this.webSocketService.receivedTyping().subscribe(bool => {
     //   this.isTyping = bool.isTyping;
     // });
-
   }
 
   ngOnInit() {
@@ -46,17 +43,17 @@ export class MessagesComponent implements OnInit {
     // }
     // this.webSocketService.joinRoom({user: this.userService.getLoggedInUser().username, room: this.chatroom});
     // this.userService.getChatRoomsChat(this.chatroom).subscribe(messages => {
-    //   this.messageArray = messages.json();
+    //   // this.messageArray = messages.json();
     // });
   }
 
-  sendMessage() {
-    // this.webSocketService.sendMessage({room: this.chatroom, user: this.userService.getLoggedInUser().username, message: this.message});
-    this.message = '';
-  }
-
-  typing() {
-    // this.webSocketService.typing({room: this.chatroom, user: this.userService.getLoggedInUser().username});
-  }
+  // sendMessage() {
+  //   this.webSocketService.sendMessage({room: this.chatroom, user: this.userService.getLoggedInUser().username, message: this.message});
+  //   this.message = '';
+  // }
+  //
+  // typing() {
+  //   this.webSocketService.typing({room: this.chatroom, user: this.userService.getLoggedInUser().username});
+  // }
 
 }

@@ -74,6 +74,7 @@ import { MembersComponent } from './members/members.component';
 import { ProfileWallComponent } from './profile-wall/profile-wall.component';
 import { ProfileInfosComponent } from './profile-infos/profile-infos.component';
 import { ProfileFriendsComponent } from './profile-friends/profile-friends.component';
+import {WebsocketService} from "./_services/websocket.service";
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -117,7 +118,7 @@ import { ProfileFriendsComponent } from './profile-friends/profile-friends.compo
     MatGridListModule,
   ],
 
-  providers: [AuthService, AuthGuard, EventService, VariableService, UserService, {
+  providers: [AuthService, AuthGuard, EventService, VariableService, UserService, WebsocketService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
