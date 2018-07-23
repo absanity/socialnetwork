@@ -10,11 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  registerUserData = {}
+  registerUserData: Object = {preferences: {}}
 
   constructor(private _auth: AuthService,
               private _router: Router,
-              //private registerUserData: Object = {preferences: {}}
             ) {
   }//injection of the AuthService & Router component
 

@@ -34,7 +34,7 @@
           </div>
           <div class="form-group" [class.has-danger]="fullNameControl.invalid && fullNameControl.touched" [class.has-success]="fullNameControl.valid">
             <label class="control-label" for="">Name</label>
-            <input [(ngModel)]="registerUserData.nom" name="nom" type="nom" class="form-control rounded-0" #fullNameControl="ngModel" required>
+            <input [(ngModel)]="registerUserData.name" name="name" type="name" class="form-control rounded-0" #fullNameControl="ngModel" required>
             <span class="errors" *ngIf="fullNameControl.invalid && fullNameControl.touched">Give your name</span>
           </div>
           <div class="form-group" [class.has-danger]="fullSurnameControl.invalid && fullSurnameControl.touched" [class.has-success]="fullSurnameControl.valid">

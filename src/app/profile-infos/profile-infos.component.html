@@ -3,8 +3,16 @@
     <!--<div mat-card-avatar class="example-header-image"></div>-->
     <mat-card-title>{{ infos.pseudo }}</mat-card-title>
     <mat-card-subtitle>{{ infos.email }}</mat-card-subtitle>
+    <img src="" alt="">
   </mat-card-header>
   <img mat-card-image [src]="'https://api.adorable.io/avatars/200/'+infos.pseudo" [alt]="infos.pseudo">
+  <!-- ADD UPLOAD BUTTON -->
+  <div class="upchoices">
+    <input type="file" (change)="onFileSelected($event)" name="photo" class="col-md-4">
+    <button type="button" (click)="saveUserData()" class="btn btn-primary float-right">Upload</button>
+  </div>
+
+  <!-- end upload -->
   <mat-card-content>
     <p>
       <!--The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.-->

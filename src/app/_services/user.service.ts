@@ -14,6 +14,7 @@ export class UserService {
 
   public uploadFile(selectedFile: File) {
     const fd = new FormData();
+    console.log('work')
     fd.append('image', selectedFile, selectedFile.name);
     return this._http.post<any>(this._uploadUrl, fd)
   }

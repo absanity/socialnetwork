@@ -5,19 +5,19 @@
                 <h3 class="mb-0">Login</h3>
             </div>
             <div class="card-body">
-                <form class="form">
-                    <div class="form-group">
-                        <label for="">Email</label>
-                        <input [(ngModel)]="loginUserData.email" name="email" type="text"
-                               class="form-control rounded 0" required>
+                <form #loginForm="ngForm"class="form">
+                    <div class="form-group" [class.has-danger]="fullMailControl.invalid && fullMailControl.touched" [class.has-success]="fullMailControl.valid">
+                        <label class="control-label" for="">Email</label>
+                        <input [(ngModel)]="loginUserData.email" name="email" type="text" class="form-control rounded 0" #fullMailControl="ngModel" required>
+                        <span class="errors" *ngIf="fullMailControl.invalid && fullMailControl.touched">Provide your email</span>
                     </div>
-                    <div class="form-group">
-                        <label for="">Password</label>
-                        <input [(ngModel)]="loginUserData.password" name="password" type="password"
-                               class="form-control rounded-0" required>
+                    <div class="form-group" [class.has-danger]="fullPasswordControl.invalid && fullPasswordControl.touched" [class.has-success]="fullPasswordControl.valid">
+                        <label class="control-label" for="">Password</label>
+                        <input [(ngModel)]="loginUserData.password" name="password" type="password" class="form-control rounded-0" #fullPasswordControl="ngModel" required>
+                        <span class="errors" *ngIf="fullPasswordControl.invalid && fullPasswordControl.touched">Provide a password</span>
                     </div>
                     <a class="btn btn-success float-left" routerLink="/resetpassword" routerLinkActive="active">Reset password</a>
-                    <button (click)="loginUser()" class="btn btn-success float-right" type="button">Login</button>
+                    <button (click)="loginUser()" class="btn btn-success float-right" type="button" [disabled]="registerForm.invalid">Login</button>
                 </form>
             </div>
         </div>

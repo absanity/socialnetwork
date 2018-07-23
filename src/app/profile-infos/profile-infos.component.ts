@@ -1,7 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {VariableService} from "../_services/variable.service";
 import {ActivatedRoute, Params} from "@angular/router";
+
+///// SERVICES /////
+import { UserService } from '../_services/user.service';
+
 
 @Component({
   selector: 'app-profile-infos',
@@ -20,7 +24,7 @@ export class ProfileInfosComponent implements OnInit {
   private infos: Object = {}
 
 
-  constructor(private http: HttpClient, private variable: VariableService, private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient, private variable: VariableService, private activatedRoute: ActivatedRoute, private _userService: UserService) {
     this._profileInfosUrl = this.variable.getMainUrl() + 'api/profile-infos'
     this._inviteUrl = this.variable.getMainUrl() + 'api/invite'
     this._deleteRelationshipUrl = this.variable.getMainUrl() + 'api/delete-relationship'
@@ -41,6 +45,7 @@ export class ProfileInfosComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._profileInfosUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(data => {
+      console.log(data.avatar.path)
       this.infos = data;
     });
   }
@@ -84,4 +89,33 @@ export class ProfileInfosComponent implements OnInit {
       }
     )
   }
+
+  ////UPLOAD FILES ////
+  protected selectedFile: File = null;//create a variable for uploading the files
+
+    public onFileSelected(event){
+
+      this.selectedFile = <File>event.target.files[0];
+      console.log(this.selectedFile)
+    }
+/*
+  public onFileSelected(event) {
+    console.log(event)
+    console.log(this.selectedFile)
+    this.selectedFile = <File>event.target.files[0];
+  }
+*/
+  public saveUserData() {
+    if (this.selectedFile && this.selectedFile != null) {
+   this._userService.uploadFile(this.selectedFile)
+     .subscribe(
+       res => {
+         console.log(res)
+         /*this.avatar;*/
+       },
+       err => { console.log(err) }
+     )
+ }
+  }
+
 }

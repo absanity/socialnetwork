@@ -1,0 +1,4 @@
+.upchoices{
+  display: flex;
+  flex-direction: column;
+}
