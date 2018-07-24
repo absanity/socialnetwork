@@ -17,7 +17,7 @@
                         <span class="errors" *ngIf="fullPasswordControl.invalid && fullPasswordControl.touched">Provide a password</span>
                     </div>
                     <a class="btn btn-success float-left" routerLink="/resetpassword" routerLinkActive="active">Reset password</a>
-                    <button (click)="loginUser()" class="btn btn-success float-right" type="button" [disabled]="registerForm.invalid">Login</button>
+                    <button (click)="loginUser()" class="btn btn-success float-right" type="button" [disabled]="loginForm.invalid">Login</button>
                 </form>
             </div>
         </div>

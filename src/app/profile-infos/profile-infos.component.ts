@@ -5,6 +5,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 
 ///// SERVICES /////
 import { UserService } from '../_services/user.service';
+import { PushNotifService } from '../_services/push-notif.service';
 
 
 @Component({
@@ -22,15 +23,24 @@ export class ProfileInfosComponent implements OnInit {
   _acceptInvitationUrl = ''
 
   private infos: Object = {}
+  protected message:string;
+  protected push: string;
 
-
-  constructor(private http: HttpClient, private variable: VariableService, private activatedRoute: ActivatedRoute, private _userService: UserService) {
+  constructor(private http: HttpClient, private variable: VariableService, private activatedRoute: ActivatedRoute, private _userService: UserService, private _pushNotifService: PushNotifService) {
     this._profileInfosUrl = this.variable.getMainUrl() + 'api/profile-infos'
     this._inviteUrl = this.variable.getMainUrl() + 'api/invite'
     this._deleteRelationshipUrl = this.variable.getMainUrl() + 'api/delete-relationship'
     this._cancelInvitationUrl = this.variable.getMainUrl() + 'api/cancel-invitation'
     this._acceptInvitationUrl = this.variable.getMainUrl() + 'api/accept-invitation'
-
+    this._pushNotifService.notifSent.subscribe(
+      message => {
+        this.message = message;
+        setTimeout(() =>{
+          this.message = undefined;
+        }, 2000)
+      },
+      (err) => {console.log(err)}
+    )
 
   }
 
@@ -45,7 +55,6 @@ export class ProfileInfosComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._profileInfosUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(data => {
-      console.log(data.avatar.path)
       this.infos = data;
     });
   }
@@ -110,7 +119,10 @@ export class ProfileInfosComponent implements OnInit {
    this._userService.uploadFile(this.selectedFile)
      .subscribe(
        res => {
+         let message = 'Picture uploaded'
          console.log(res)
+         this.loadInfos(this._pseudo)
+         this._pushNotifService.sendPushNotif(message)
          /*this.avatar;*/
        },
        err => { console.log(err) }

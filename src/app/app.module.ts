@@ -27,6 +27,7 @@ import {AuthService} from './_services/auth.service';
 import {EventService} from './_services/event.service';
 import {TokenInterceptorService} from './_services/token-interceptor.service';
 import {AuthGuard} from './auth.guard';
+import {PushNotifService} from './_services/push-notif.service';
 
 
 import {
@@ -74,6 +75,7 @@ import { MembersComponent } from './members/members.component';
 import { ProfileWallComponent } from './profile-wall/profile-wall.component';
 import { ProfileInfosComponent } from './profile-infos/profile-infos.component';
 import { ProfileFriendsComponent } from './profile-friends/profile-friends.component';
+import { NotifPushComponent } from './notif-push/notif-push.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -100,6 +102,7 @@ import { ProfileFriendsComponent } from './profile-friends/profile-friends.compo
     ProfileWallComponent,
     ProfileInfosComponent,
     ProfileFriendsComponent,
+    NotifPushComponent,
     //  InvalidmessageDirective,
     //  InvalidtypeDirective
   ],
@@ -117,7 +120,7 @@ import { ProfileFriendsComponent } from './profile-friends/profile-friends.compo
     MatGridListModule,
   ],
 
-  providers: [AuthService, AuthGuard, EventService, VariableService, UserService, {
+  providers: [AuthService, AuthGuard, EventService, VariableService, UserService, PushNotifService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
