@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class MembersComponent implements OnInit {
 
+  findAFriend: Object = {}; //object with the pseudo
   _membersUrl = ''
   private members: Array<any>;
 
@@ -43,5 +44,15 @@ export class MembersComponent implements OnInit {
     console.log('selectMember ... ' + pseudo);
     this.router.navigate(['/profile'], { queryParams: { pseudo: pseudo }})
   }
+/*
+  findFriend(){
+    this.findFriend(this.findAFriend)
+    .subscribe(
+      res => {
+        console.log(res)
+      },
+      err => console.log(err)
+    )
+  }*/
 
 }

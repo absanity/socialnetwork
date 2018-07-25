@@ -4,6 +4,13 @@
 @import url('https://fonts.googleapis.com/css?family=Caveat|Special+Elite');
 
 /*FONT GENERAL*/
+.global {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 button {
   font-family: 'Special Elite', cursive;
 }
@@ -28,7 +35,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 36vh; /* poussé de la moitié de hauteur de viewport */
+  margin-top: 30vh; /* poussé de la moitié de hauteur de viewport */
   text-align: center;
   margin-left: 3%;
 }
@@ -42,10 +49,29 @@ button {
   color: white;
   font-size: 2.5rem;
   font-family: 'Special Elite', cursive;
+
 }
 
 .homeParagraphIntro {
   color: white;
   font-size: 1.5rem;
   font-family: 'Special Elite', cursive;
+  background-color: #125D1F;
+}
+
+/*FONTS STATS*/
+.stats {
+  z-index: 30;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.infos {
+  text-decoration: underline;
+  margin-top: 2px;
+  padding: 0 0.2rem;
+  font-family: 'Special Elite', cursive;
+  color: white;
 }

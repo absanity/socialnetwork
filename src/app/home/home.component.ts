@@ -9,6 +9,8 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 })
 export class HomeComponent implements OnInit {
 
+  private globalStats = {};
+
   constructor(private _router: Router, private http: HttpClient) {
   }
 
@@ -20,8 +22,9 @@ export class HomeComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       "http://localhost:3000/api/home"
     ).subscribe(data => {
-      console.log('HomePage')
+      this.globalStats = data;
       console.log(data)
+      //this.stats = data;
     });
   }
 
