@@ -74,6 +74,7 @@ import { MembersComponent } from './members/members.component';
 import { ProfileWallComponent } from './profile-wall/profile-wall.component';
 import { ProfileInfosComponent } from './profile-infos/profile-infos.component';
 import { ProfileFriendsComponent } from './profile-friends/profile-friends.component';
+import { ConversationComponent } from './conversation/conversation.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -100,6 +101,7 @@ import { ProfileFriendsComponent } from './profile-friends/profile-friends.compo
     ProfileWallComponent,
     ProfileInfosComponent,
     ProfileFriendsComponent,
+    ConversationComponent,
     //  InvalidmessageDirective,
     //  InvalidtypeDirective
   ],

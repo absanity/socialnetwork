@@ -5,7 +5,13 @@
     <mat-card-subtitle>{{ infos.email }}</mat-card-subtitle>
     <img src="" alt="">
   </mat-card-header>
-  <img mat-card-image [src]="'https://api.adorable.io/avatars/200/'+infos.pseudo" [alt]="infos.pseudo">
+  <div *ngIf="infos.avatar">
+    <div class="avatar" [ngStyle]="{'background-image': 'url(http://192.168.160.133:4200/assets/test.png)'}" [title]="infos.pseudo">
+    </div>
+  </div>
+  <div *ngIf="!infos.avatar">
+    <img mat-card-image [src]="'https://api.adorable.io/avatars/200/'+infos.pseudo" [alt]="infos.pseudo">
+  </div>
   <!-- ADD UPLOAD BUTTON -->
   <div class="upchoices">
     <input type="file" (change)="onFileSelected($event)" name="photo" class="col-md-4">

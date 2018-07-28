@@ -1,0 +1,31 @@
+<div id="layout_chat">
+
+    <div class="big" *ngIf="state=='big'">
+        <div class="main_room">
+            <mat-chip-list>
+                <mat-chip color="primary" selected (click)="closeChat()">Fermer</mat-chip>
+                <mat-chip>Room principale</mat-chip>
+                <mat-chip>Papadum</mat-chip>
+                <mat-chip>Naan</mat-chip>
+                <mat-chip>Dal</mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="main_messages">
+            <div class="content_row">
+                <div class="content_col col1"></div>
+                <div class="content_col col2"></div>
+            </div>
+        </div>
+        <div class="main_input">
+            <input type="text" [(ngModel)]="inputMessage" (keyup.enter)="sendMessage()" />
+        </div>
+
+    </div>
+
+    <div class="small" *ngIf="state=='small'">
+        <mat-chip-list>
+            <mat-chip (click)="openChat()">Chat / Conversation</mat-chip>
+        </mat-chip-list>
+    </div>
+
+</div>

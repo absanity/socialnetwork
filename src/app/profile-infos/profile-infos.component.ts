@@ -45,7 +45,7 @@ export class ProfileInfosComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._profileInfosUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(data => {
-      console.log(data.avatar.path)
+      // console.log(data['avatar']['path'])
       this.infos = data;
     });
   }
