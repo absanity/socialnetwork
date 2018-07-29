@@ -33,16 +33,20 @@ export class ProfileFriendsComponent implements OnInit {
     ).subscribe(res => {
       this.friends = Object.keys(res).map(function (key) {
         let o;
-        //console.log(res[key].userSource.pseudo)
-        //console.log(pseudo)
-        if(res[key].userSource.pseudo == pseudo || pseudo == ''){
-
+        console.log(res[key])
+        console.log(pseudo)
+        console.log(res[key].userSource.pseudo)
+        console.log(res[key].userTarget.pseudo)
+        if(res[key].userSource.pseudo == pseudo){
+          console.log('source')
           o = {pseudo: res[key].userTarget.pseudo, email: res[key].userTarget.email}
         }else{
           //console.log(res[key].userSource.pseudo)
+          console.log('target')
           o = {pseudo: res[key].userSource.pseudo, email: res[key].userSource.email}
         }
         res[key].finalUser = o;
+        console.log(o)
         console.log(res[key])
         return res[key];
       });

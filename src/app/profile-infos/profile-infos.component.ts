@@ -63,12 +63,16 @@ export class ProfileInfosComponent implements OnInit {
 
       //console.log(Object.keys(data.preferences))
       let pseudoPath = 'https://api.adorable.io/avatars/200/' + data['pseudo']
+      let customPath = '';
       if(this.infos['avatar']['path'] == pseudoPath){
-        //console.log(data["avatar"]["path"] + 'api')
-        this.avDefault = true;
+      //  console.log(data["avatar"]["path"] + 'api')
+        //this.avDefault = true;
+        this.infos['avatar']['path'] = pseudoPath
       } else {
-        //console.log(data.avatar.path + 'custom')
-        this.avDefault = false;
+        console.log('custom')
+        //this.avDefault = false;
+        this.infos['avatar']['path'] = 'http://localhost:4200/assets/uploads/' + this.infos['avatar']['path']
+        //console.log(data.avatar.path)
       }
       if(localStorage.getItem('pseudo') == data['pseudo']){
         this.myProfil = true;
