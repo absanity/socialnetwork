@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   private loadInfos() {
     this.http.get<HttpResponse<any>>(
-      "http://localhost:3000/api/home"
+      "http://192.168.160.133:3000/api/home"
     ).subscribe(data => {
       this.globalStats = data;
       console.log(data)

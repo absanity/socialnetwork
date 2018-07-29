@@ -26,7 +26,7 @@ export class ProfilComponent implements OnInit {
   ngOnInit() {
     console.log('profil')
     let o = {}
-    this.http.get<any>("http://localhost:3000/api/events", {})
+    this.http.get<any>("http://192.168.160.133:3000/api/events", {})
       .subscribe(
         res => console.log(res),
         err => {

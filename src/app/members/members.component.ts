@@ -63,7 +63,7 @@ export class MembersComponent implements OnInit {
         }else{
           //console.log(res[key].avatar.path + ' custom')
           res[key].avDefault = false;
-          res[key].customPath = 'http://localhost:4200/assets/uploads/' + res[key].avatar.path
+          res[key].customPath = 'http://192.168.160.133:4200/assets/uploads/' + res[key].avatar.path
         }
       }
       console.log(res[key])

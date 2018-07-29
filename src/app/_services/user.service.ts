@@ -5,8 +5,8 @@ import { User } from '../interfaces/user'; // typescript file used to check if t
 @Injectable()
 export class UserService {
 
-  private _resetpassword: string = "http://localhost:3000/api/resetpassword";
-  private _uploadUrl: string = "http://localhost:3000/api/upload";
+  private _resetpassword: string = "http://192.168.160.133:3000/api/resetpassword";
+  private _uploadUrl: string = "http://192.168.160.133:3000/api/upload";
 
   constructor(
     private _http: HttpClient

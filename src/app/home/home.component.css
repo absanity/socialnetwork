@@ -20,7 +20,7 @@ button {
   justify-content: center;
   z-index: 0;
   margin: 0;
-  background-image: url('http://localhost:4200/assets/Fort_homepage.png');
+  background-image: url('http://192.168.160.133:4200/assets/Fort_homepage.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

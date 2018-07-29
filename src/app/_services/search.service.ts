@@ -8,7 +8,7 @@ export class SearchService {
 
   url: string
   constructor(private http : Http) {
-    this.url = 'http://localhost:3000/api/search?ml='
+    this.url = 'http://192.168.160.133:3000/api/search?ml='
    }
 
    search_word(term){

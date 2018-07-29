@@ -45,7 +45,7 @@ export class InvitationsComponent implements OnInit {
           if(res[key].avatar.path == undefined){
             res[key].avatar.path = pseudoPath;
           }else{
-            res[key].customPath = 'http://localhost:4200/assets/uploads/' + res[key].avatar.path
+            res[key].customPath = 'http://192.168.160.133:4200/assets/uploads/' + res[key].avatar.path
             console.log(res[key].customPath)
           }
         }

@@ -71,7 +71,7 @@ export class ProfileInfosComponent implements OnInit {
       } else {
         console.log('custom')
         //this.avDefault = false;
-        this.infos['avatar']['path'] = 'http://localhost:4200/assets/uploads/' + this.infos['avatar']['path']
+        this.infos['avatar']['path'] = 'http://192.168.160.133:4200/assets/uploads/' + this.infos['avatar']['path']
         //console.log(data.avatar.path)
       }
       if(localStorage.getItem('pseudo') == data['pseudo']){

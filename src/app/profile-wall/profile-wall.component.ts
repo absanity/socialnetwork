@@ -61,7 +61,7 @@ export class ProfileWallComponent implements OnInit {
             data[key].userSource.avatar.path = pseudoPath;
           }else{
             //console.log(data[key].userSource.avatar.path + ' custom')
-            data[key].userSource.customPath = 'http://localhost:4200/assets/uploads/' + data[key].userSource.avatar.path
+            data[key].userSource.customPath = 'http://192.168.160.133:4200/assets/uploads/' + data[key].userSource.avatar.path
           }
         //console.log(data[key])
       }
