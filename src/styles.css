@@ -27,8 +27,8 @@ body {
 }
 
 #layout_chat .big {
-  height: calc(100vh - 0px);
-  background-color: rgba(60, 60, 60, .95);
+  height: calc(100vh - 200px);
+  background-color: rgba(60, 60, 60, .5);
 }
 
 #layout_chat .small {
@@ -86,27 +86,32 @@ body {
 }
 .content_row .content_col {
   display: table-cell;
-  /*display: inline-block;*/
-  /*height: 50px;*/
-  padding: 5px;
-}
+  vertical-align: top;
 
-.content_row .content_col.col1 {
+}
+.content_row .content_col .content {
+  padding: 5px;
+  display: inline-block;
+  overflow-y: scroll;
+  height: calc(100vh - 295px);
+
+}
+.content_row .content.content1 {
   background-color: #343a40!important;
   width: calc(100vw - 300px);
-  overflow-y: scroll;
-  height: calc(100vh - 95px);
-  display: inline-block;
+  /*overflow-y: scroll;*/
+  /*height: calc(100vh - 295px);*/
+  /*display: inline-block;*/
 }
 
-.content_row .content_col.col2 {
+.content_row .content.content2 {
   background-color: #4b595f;
   /*color: #FFF;*/
   width: 300px;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   /*display: inline-block;*/
-  height: calc(100vh - 95px);
-  vertical-align: top;
+  /*height: calc(100vh - 295px);*/
+
 }
 
 
@@ -160,11 +165,11 @@ body {
   /*background-color: #FF0000;*/
   color: #FFF;
   display: inline-block;
-  /*position: absolute;*/
-  /*right: 10px;*/
-  /*top: 10px;*/
+  position: absolute;
+  right: 300px;
+  top: 60px;
   text-align: right;
-  float: right;
+  /*float: right;*/
   line-height: 0px!important;
 }
 

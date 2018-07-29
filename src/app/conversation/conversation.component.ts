@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import * as socketIo from 'socket.io-client';
 import {HttpClient} from "@angular/common/http";
 import {VariableService} from "../_services/variable.service";
@@ -12,23 +12,26 @@ import {isUndefined} from "util";
   templateUrl: './conversation.component.html',
   styleUrls: ['./conversation.component.css']
 })
-export class ConversationComponent implements OnInit {
+export class ConversationComponent implements OnInit, AfterViewChecked  {
 
   private socket;
   private state = 'small';
   private inputMessage = '';
   private _chatMessageUrl:string = '';
 
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   conversations: Object = {};
   currentConversationRef: String = 'room-default';
+  historyConversationRef: Array<any> = ['room-default'];
   connectedUsers: Array<any> = [];
   selectedUsers: Array<any> = [];
   highlightedUsers: Object = {  };
 
+
   constructor(private http: HttpClient,
               private variable: VariableService,
-              private websocketService: WebsocketService
+              private websocketService: WebsocketService,
   ) {
     this._chatMessageUrl = this.variable.getMainUrl() + 'api/chat-message'
   }
@@ -46,8 +49,24 @@ export class ConversationComponent implements OnInit {
     this.initSocket(this);
   }
 
+  ngAfterViewChecked() {
+    console.log('ngAfterViewChecked ********');
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }
+  }
+
   initSocket(clone) {
     console.log('initSocket...');
+    if(Websocket.socket != null) {
+      Websocket.socket.disconnect();
+    }
+
+
     Websocket.socket = socketIo(Websocket.SERVER_URL);
 
     // var clone = this;
@@ -75,6 +94,7 @@ export class ConversationComponent implements OnInit {
 
     Websocket.socket.on('message', function(data) {
       console.log('*** on message...');
+      console.log(data);
 
       let key = data['placeType'] + '-' + data['placeName'];
       let message = data.message;
@@ -83,8 +103,10 @@ export class ConversationComponent implements OnInit {
       }
       clone.conversations[key].push({ senderPseudo: data['senderPseudo'], message: message });
 
-      if(clone.currentConversationRef != 'room-default') {
-        clone.highlightedUsers['room-default'] = true;
+      key = 'room-default';
+      if(clone.currentConversationRef != key) {
+        clone.highlightedUsers[key] = true;
+        clone.addToHistory(key);
       }
 
     });
@@ -109,8 +131,10 @@ export class ConversationComponent implements OnInit {
       let targetPseudo = data['senderPseudo'];
       clone.addMessage(clone, senderPseudo, targetPseudo, data['message']);
 
-      if(clone.currentConversationRef != 'private-'+targetPseudo) {
-        clone.highlightedUsers['private-'+targetPseudo] = true;
+      let key = 'private-'+targetPseudo;
+      if(clone.currentConversationRef != key) {
+        clone.highlightedUsers[key] = true;
+        clone.addToHistory(key);
       }
 
     });
@@ -159,6 +183,8 @@ export class ConversationComponent implements OnInit {
       delete this.highlightedUsers[key];
     }
 
+    this.addToHistory(key);
+
 
   }
 
@@ -177,6 +203,62 @@ export class ConversationComponent implements OnInit {
         clone.inputMessage = '';
       }
     )
+  }
+
+  addToHistory(key) {
+    console.log('********************************');
+    let index = this.historyConversationRef.indexOf(key);
+    if(index != -1) {
+      this.historyConversationRef.splice(index, 1);
+    }
+    this.historyConversationRef.push(key);
+    console.log(this.historyConversationRef);
+  }
+
+  closeCurrentChannel() {
+
+    console.log('closeCurrentChannel...');
+
+    if(this.historyConversationRef.length == 0) {
+      this.selectChannel('room', 'default');
+      return;
+    }
+
+    if(!isUndefined(this.highlightedUsers[this.currentConversationRef])) {
+      delete this.highlightedUsers[this.currentConversationRef];
+    }
+
+    var index, tab, placeType, placeName;
+
+
+    let currentKey = this.historyConversationRef.pop();
+
+    tab = currentKey.split('-');
+    placeType = tab.shift();
+    placeName = tab.join('-');
+
+    index = this.selectedUsers.indexOf(placeName);
+    if(index != -1) {
+      this.selectedUsers.splice(index, 1);
+    }
+
+
+    let previousKey = this.historyConversationRef[this.historyConversationRef.length - 1];
+    tab = previousKey.split('-');
+    placeType = tab.shift();
+    placeName = tab.join('-');
+
+    index = this.selectedUsers.indexOf(placeName);
+
+    if(index != -1) {
+      this.selectChannel(placeType, placeName);
+    } else {
+      this.historyConversationRef = [];
+      this.selectChannel('room', 'default');
+    }
+
+
+
   }
 
 }

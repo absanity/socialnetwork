@@ -24,22 +24,23 @@
         </div>
         <div class="main_messages">
             <div class="content_row">
-                <div class="content_col col1">
-                    <div class="close-chat-channel"><i class="far fa-times-circle fa-1x" (click)="closeChat()"></i></div>
-
-                    <div class="message-line" *ngFor="let message of conversations[currentConversationRef]">
-                        <span class="sender-pseudo">#{{ message.senderPseudo }} :></span> {{ message.message }}
+                <div class="content_col">
+                    <div #scrollMe class="content content1">
+                        <!--#currentConversationRef : {{ currentConversationRef }}-->
+                        <div *ngIf="currentConversationRef != 'room-default'" class="close-chat-channel"><i class="far fa-times-circle fa-1x" (click)="closeCurrentChannel()"></i></div>
+                        <div class="message-line" *ngFor="let message of conversations[currentConversationRef]">
+                            <span class="sender-pseudo">#{{ message.senderPseudo }} :></span> {{ message.message }}
+                        </div>
+                        <p>&nbsp;</p>
                     </div>
-
-
 
                 </div>
-                <div class="content_col col2">
-
-                    <div *ngFor="let user of connectedUsers">
-                        <a class="connected-users" (click)="selectChannel('private', user.pseudo)">{{ user.pseudo }}</a>
+                <div class="content_col">
+                    <div class="content content2">
+                        <div *ngFor="let user of connectedUsers">
+                            <a class="connected-users" (click)="selectChannel('private', user.pseudo)">{{ user.pseudo }}</a>
+                        </div>
                     </div>
-
 
                 </div>
             </div>

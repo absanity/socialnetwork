@@ -32,7 +32,8 @@ export class AuthService {
 
   logoutUser() {
     console.log('logout *****');
-    Websocket.socket.emit('forceDisconnect');
+    // Websocket.socket.emit('forceDisconnect');
+    Websocket.socket.disconnect();
     localStorage.removeItem('token')
     this._router.navigate(['/home'])
   }
