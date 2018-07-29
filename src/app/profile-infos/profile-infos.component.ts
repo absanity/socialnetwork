@@ -1,11 +1,12 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {VariableService} from "../_services/variable.service";
 import {ActivatedRoute, Params} from "@angular/router";
 
 ///// SERVICES /////
 import { UserService } from '../_services/user.service';
 import { PushNotifService } from '../_services/push-notif.service';
+import {WebHttp} from "../classes/WebHttp";
+import {Websocket} from "../classes/Websocket";
 
 
 @Component({
@@ -28,12 +29,12 @@ export class ProfileInfosComponent implements OnInit {
   protected message:string;
   protected push: string;
 
-  constructor(private http: HttpClient, private variable: VariableService, private activatedRoute: ActivatedRoute, private _userService: UserService, private _pushNotifService: PushNotifService) {
-    this._profileInfosUrl = this.variable.getMainUrl() + 'api/profile-infos'
-    this._inviteUrl = this.variable.getMainUrl() + 'api/invite'
-    this._deleteRelationshipUrl = this.variable.getMainUrl() + 'api/delete-relationship'
-    this._cancelInvitationUrl = this.variable.getMainUrl() + 'api/cancel-invitation'
-    this._acceptInvitationUrl = this.variable.getMainUrl() + 'api/accept-invitation'
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private _userService: UserService, private _pushNotifService: PushNotifService) {
+    this._profileInfosUrl = Websocket.URL + '/api/profile-infos'
+    this._inviteUrl = Websocket.URL + '/api/invite'
+    this._deleteRelationshipUrl = Websocket.URL + '/api/delete-relationship'
+    this._cancelInvitationUrl = Websocket.URL + '/api/cancel-invitation'
+    this._acceptInvitationUrl = Websocket.URL + '/api/accept-invitation'
     this._pushNotifService.notifSent.subscribe(
       message => {
         this.message = message;
@@ -57,7 +58,7 @@ export class ProfileInfosComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._profileInfosUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(data => {
-      //console.log(data)
+
       this.infos = data;
       console.log(data)
 
@@ -71,7 +72,7 @@ export class ProfileInfosComponent implements OnInit {
       } else {
         console.log('custom')
         //this.avDefault = false;
-        this.infos['avatar']['path'] = 'http://192.168.160.133:4200/assets/uploads/' + this.infos['avatar']['path']
+        this.infos['avatar']['path'] = WebHttp.URL + '/assets/uploads/' + this.infos['avatar']['path']
         //console.log(data.avatar.path)
       }
       if(localStorage.getItem('pseudo') == data['pseudo']){

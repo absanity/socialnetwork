@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {VariableService} from "../_services/variable.service";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {FormControl} from '@angular/forms';
@@ -7,6 +6,8 @@ import {Observable}  from 'rxjs/Rx';
 
 //// SERVICES ////
 import {SearchService} from '../_services/search.service';
+import {WebHttp} from "../classes/WebHttp";
+import {Websocket} from "../classes/Websocket";
 
 @Component({
   selector: 'app-members',
@@ -23,9 +24,9 @@ export class MembersComponent implements OnInit {
   _membersUrl = ''
   private members: Array<any>;
 
-  constructor(private http: HttpClient, private variable: VariableService,
+  constructor(private http: HttpClient,
               private router: Router, private service: SearchService) {
-    this._membersUrl = this.variable.getMainUrl() + 'api/members'
+    this._membersUrl = Websocket.URL + '/api/members'
     this.searchTerm.valueChanges
       .debounceTime(400)
       .subscribe(data => {
@@ -63,7 +64,7 @@ export class MembersComponent implements OnInit {
         }else{
           //console.log(res[key].avatar.path + ' custom')
           res[key].avDefault = false;
-          res[key].customPath = 'http://192.168.160.133:4200/assets/uploads/' + res[key].avatar.path
+          res[key].customPath = WebHttp.URL + '/assets/uploads/' + res[key].avatar.path
         }
       }
       console.log(res[key])

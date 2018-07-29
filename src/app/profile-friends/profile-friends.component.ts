@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
-import {VariableService} from "../_services/variable.service";
 import {HttpClient, HttpResponse} from "@angular/common/http";
+import {Websocket} from "../classes/Websocket";
 
 @Component({
   selector: 'app-profile-friends',
@@ -15,8 +15,8 @@ export class ProfileFriendsComponent implements OnInit {
   friends: Array<any> = []
 
 
-  constructor(private http: HttpClient, private variable: VariableService, private activatedRoute: ActivatedRoute) {
-    this._friendsListUrl = this.variable.getMainUrl() + 'api/friends'
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
+    this._friendsListUrl = Websocket.URL + '/api/friends'
 
   }
 

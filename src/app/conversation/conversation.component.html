@@ -1,0 +1,71 @@
+<div id="layout_chat">
+
+    <div class="big" *ngIf="state=='big'">
+        <!--<div class="main_actions">-->
+
+        <!--</div>-->
+        <div class="close-chat">
+            <i class="material-icons" (click)="closeChat()">
+                arrow_drop_down
+            </i>
+        </div>
+
+        <div class="main_room">
+            <!--<mat-chip-list>-->
+                <!--<mat-chip color="primary"  (click)="closeChat()">Fermer</mat-chip>-->
+                <!--<mat-chip (click)="selectChannel('room', 'default')">Room principale</mat-chip>-->
+                <!--<mat-chip *ngFor="let pseudo of selectedUsers" (click)="selectChannel('private', pseudo)">{{ pseudo }}</mat-chip>-->
+            <!--</mat-chip-list>-->
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [value]="currentConversationRef">
+                <!--<mat-button-toggle (click)="closeChat()">Fermer</mat-button-toggle>-->
+                <mat-button-toggle [value]="'room-default'" (click)="selectChannel('room', 'default')" [ngClass]="highlightedUsers['room-default'] ? 'highlight' : ''">Room principale</mat-button-toggle>
+                <mat-button-toggle  [value]="'private-' + pseudo" *ngFor="let pseudo of selectedUsers" [ngClass]="highlightedUsers['private-'+pseudo] ? 'highlight' : ''" (click)="selectChannel('private', pseudo)">{{ pseudo }}</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <div class="main_messages">
+            <div class="content_row">
+                <div class="content_col">
+                    <div #scrollMe class="content content1">
+                        <!--#currentConversationRef : {{ currentConversationRef }}-->
+                        <div *ngIf="currentConversationRef != 'room-default'" class="close-chat-channel"><i class="far fa-times-circle fa-1x" (click)="closeCurrentChannel()"></i></div>
+                        <div class="message-line" *ngFor="let message of conversations[currentConversationRef]">
+                            <span class="sender-pseudo">#{{ message.senderPseudo }} :></span> {{ message.message }}
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+
+                </div>
+                <div class="content_col">
+                    <div class="content content2">
+                        <div *ngFor="let user of connectedUsers">
+                            <a class="connected-users" (click)="selectChannel('private', user.pseudo)">{{ user.pseudo }}</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="main_input">
+            <input type="text" [(ngModel)]="inputMessage" (keyup.enter)="validateInput()" />
+        </div>
+
+    </div>
+
+    <div class="small" *ngIf="state=='small'">
+        <!--<mat-chip-list>-->
+            <!--<mat-chip (click)="openChat()">Chat / Conversation</mat-chip>-->
+        <!--</mat-chip-list>-->
+        <!--<mat-button-toggle-group name="fontStyle" aria-label="Font Style">-->
+            <!--<mat-button-toggle (click)="openChat()">-->
+                <!--Chat / Conversation-->
+                <!--<i class="material-icons">arrow_drop_up</i>-->
+            <!--</mat-button-toggle>-->
+        <!--</mat-button-toggle-group>-->
+        <div class="btn" (click)="openChat()">
+            <span class="col-btn-chat">Chat / Conversation</span>
+            <i class="col-btn-chat" class="material-icons">arrow_drop_up</i>
+        </div>
+
+    </div>
+
+</div>

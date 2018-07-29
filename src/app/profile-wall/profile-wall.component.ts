@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {VariableService} from "../_services/variable.service";
 import {ActivatedRoute, Params} from "@angular/router";
+import {WebHttp} from "../classes/WebHttp";
+import {Websocket} from "../classes/Websocket";
 
 @Component({
   selector: 'app-profile-wall',
@@ -15,8 +16,8 @@ export class ProfileWallComponent implements OnInit {
   _wallUrl = ''
   messages: Array<any> = []
 
-  constructor(private http: HttpClient, private variable: VariableService, private activatedRoute: ActivatedRoute) {
-    this._wallUrl = this.variable.getMainUrl() + 'api/profile-wall'
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
+    this._wallUrl = Websocket.URL + '/api/profile-wall'
 
   }
 
@@ -61,7 +62,7 @@ export class ProfileWallComponent implements OnInit {
             data[key].userSource.avatar.path = pseudoPath;
           }else{
             //console.log(data[key].userSource.avatar.path + ' custom')
-            data[key].userSource.customPath = 'http://192.168.160.133:4200/assets/uploads/' + data[key].userSource.avatar.path
+            data[key].userSource.customPath = WebHttp.URL + '/assets/uploads/' + data[key].userSource.avatar.path
           }
         //console.log(data[key])
       }

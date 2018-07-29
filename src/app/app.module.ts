@@ -70,19 +70,21 @@ import {
   MatTooltipModule,
 
 } from '@angular/material';
-import { SendComponent } from './send/send.component';
+import {SendComponent} from './send/send.component';
 
 
 
-import {VariableService} from "./_services/variable.service";
-import { WallComponent } from './wall/wall.component';
-import { ProfileComponent } from './profile/profile.component';
-import { MembersComponent } from './members/members.component';
-import { ProfileWallComponent } from './profile-wall/profile-wall.component';
-import { ProfileInfosComponent } from './profile-infos/profile-infos.component';
-import { ProfileFriendsComponent } from './profile-friends/profile-friends.component';
+import {WallComponent} from './wall/wall.component';
+import {ProfileComponent} from './profile/profile.component';
+import {MembersComponent} from './members/members.component';
+import {ProfileWallComponent} from './profile-wall/profile-wall.component';
+import {ProfileInfosComponent} from './profile-infos/profile-infos.component';
+import {ProfileFriendsComponent} from './profile-friends/profile-friends.component';
 import { NotifPushComponent } from './notif-push/notif-push.component';
+import {ConversationComponent} from './conversation/conversation.component';
+import {WebsocketService} from "./_services/websocket.service";
 import { AdminComponent } from './admin/admin.component';
+
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -111,6 +113,7 @@ import { AdminComponent } from './admin/admin.component';
     ProfileFriendsComponent,
     NotifPushComponent,
     AdminComponent,
+    ConversationComponent,
     //  InvalidmessageDirective,
     //  InvalidtypeDirective
   ],
@@ -123,18 +126,28 @@ import { AdminComponent } from './admin/admin.component';
     MatChipsModule,
     MatInputModule,
     MatCardModule,
+    MatButtonToggleModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatGridListModule,
+
     HttpModule,
+    MatIconModule,
     MatAutocompleteModule
   ],
 
-  providers: [AuthService, AuthGuard, EventService, VariableService, UserService, PushNotifService, SearchService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
-    multi: true
-  }],
+  providers: [
+    AuthService,
+    AuthGuard,
+    EventService,
+    UserService,
+    WebsocketService,
+    PushNotifService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogComponent

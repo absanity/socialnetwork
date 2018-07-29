@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {VariableService} from "../_services/variable.service";
+import {Websocket} from "../classes/Websocket";
 
 @Component({
   selector: 'app-wall',
@@ -13,8 +13,8 @@ export class WallComponent implements OnInit {
   _wallUrl = '';
   messages: Array<any> = []
 
-  constructor(private http: HttpClient, private variable: VariableService) {
-    this._wallUrl = this.variable.getMainUrl() + 'api/wall'
+  constructor(private http: HttpClient) {
+    this._wallUrl = Websocket.URL + '/api/wall'
 
   }
 

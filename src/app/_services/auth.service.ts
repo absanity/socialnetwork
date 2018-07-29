@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {VariableService} from "./variable.service";
+import {Websocket} from "../classes/Websocket";
+import {WebHttp} from "../classes/WebHttp";
 
 @Injectable()
 export class AuthService {
@@ -10,10 +11,10 @@ export class AuthService {
   private _loginUrl = ""; // call to the backend API to collect the informations from login
 
   constructor(private http: HttpClient,
-              private _router: Router,
-              private _variable: VariableService) {
-    this._registerUrl = this._variable.getMainUrl() + 'api/register'
-    this._loginUrl = this._variable.getMainUrl() + 'api/login'
+              private _router: Router
+  ) {
+    this._registerUrl = Websocket.URL + '/api/register'
+    this._loginUrl = Websocket.URL + '/api/login'
 
   }
 
@@ -30,8 +31,11 @@ export class AuthService {
   }
 
   logoutUser() {
+    console.log('logout *****');
+    // Websocket.socket.emit('forceDisconnect');
+    Websocket.socket.disconnect();
     localStorage.removeItem('token')
-    this._router.navigate(['/events'])
+    this._router.navigate(['/home'])
   }
 
   getToken() {

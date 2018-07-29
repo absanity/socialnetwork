@@ -1,0 +1,15 @@
+.connected-users {
+    /*text-decoration: underline!important;*/
+    cursor: pointer;
+    padding: 0px 15px 2px 15px;
+    background-color: #4591b1!important;
+    color: #FFF!important;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 10pt;
+}
+
+.connected-users:hover {
+    /*text-decoration: none!important;*/
+}
+

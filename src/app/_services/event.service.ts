@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {VariableService} from "./variable.service";
+import {Websocket} from "../classes/Websocket";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,9 @@ export class EventService {
   private _eventsUrl = '';
   private _specialEventUrl = '';
 
-  constructor(private http: HttpClient, private variable: VariableService ) {
-    this._eventsUrl = variable.getMainUrl() + 'api/events'
-    this._specialEventUrl = variable.getMainUrl() + 'api/special'
+  constructor(private http: HttpClient ) {
+    this._eventsUrl = Websocket.URL + '/api/events'
+    this._specialEventUrl = Websocket.URL + '/api/special'
   }
 
   getEvents() {

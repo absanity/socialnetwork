@@ -4,7 +4,8 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {MatDialog} from "@angular/material";
 import {DialogComponent} from '../dialog/dialog.component';
 import {HttpClient} from '@angular/common/http';
-import {VariableService} from "../_services/variable.service";
+import {WebHttp} from "../classes/WebHttp";
+import {Websocket} from "../classes/Websocket";
 
 @Component({
   selector: 'app-profil',
@@ -18,15 +19,14 @@ export class ProfilComponent implements OnInit {
 
   constructor(private _router: Router,
               public dialog: MatDialog,
-              private http: HttpClient,
-              private variable: VariableService) {
-    this._profilUrl = variable.getMainUrl() + 'api/profil'
+              private http: HttpClient) {
+    this._profilUrl = Websocket.URL + '/api/profil'
   }
 
   ngOnInit() {
     console.log('profil')
     let o = {}
-    this.http.get<any>("http://192.168.160.133:3000/api/events", {})
+    this.http.get<any>(Websocket.URL + "/api/events", {})
       .subscribe(
         res => console.log(res),
         err => {

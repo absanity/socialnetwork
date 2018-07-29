@@ -1,5 +1,5 @@
 <mat-form-field style="width:700px !important;">
-  <textarea [(ngModel)]="wallPost" matInput placeholder="Mur..." style="height: 100px;" (keyup.enter)="save()"></textarea>
+    <textarea [(ngModel)]="wallPost" matInput placeholder="Mur..." style="height: 100px;" (keyup.enter)="save()"></textarea>
 </mat-form-field>
 
 
@@ -7,22 +7,22 @@
 
 <mat-card *ngFor="let o of messages">
 
-  <mat-card-header>
-<!--    <div *ngIf="o.userSource.avatar.path == 'https://api.adorable.io/avatars/200/' + 'o.userSource.pseudo'">
-      <p>hey</p>
-      <div mat-card-avatar [ngStyle]="{'background-image':'url(https://api.adorable.io/avatars/20'+o.userSource.pseudo +')'}"></div>
-    </div>
-    <div *ngIf="o.userSource.avatar.path !== 'https://api.adorable.io/avatars/200' + 'o.userSource.pseudo'">
-      <div mat-card-avatar [ngStyle]="{'background-image':'url(http://192.168.160.133:4200/assets/uploads/'+o.userSource.avatar.path +')'}"></div>
-    </div> -->
-    <img mat-card-avatar mat-card-image [src]="o.userSource.customPath">
-    <mat-card-title>{{ o.userSource.pseudo }}</mat-card-title>
-    <mat-card-subtitle>{{ o.created }}</mat-card-subtitle>
-  </mat-card-header>
-  <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
-  <mat-card-content>
-    <p>
-      {{ o.message }}
-    </p>
-  </mat-card-content>
+    <mat-card-header>
+        <!--    <div *ngIf="o.userSource.avatar.path == 'https://api.adorable.io/avatars/200/' + 'o.userSource.pseudo'">
+              <p>hey</p>
+              <div mat-card-avatar [ngStyle]="{'background-image':'url(https://api.adorable.io/avatars/20'+o.userSource.pseudo +')'}"></div>
+            </div>
+            <div *ngIf="o.userSource.avatar.path !== 'https://api.adorable.io/avatars/200' + 'o.userSource.pseudo'">
+              <div mat-card-avatar [ngStyle]="{'background-image':'url(http://localhost:4200/assets/uploads/'+o.userSource.avatar.path +')'}"></div>
+            </div> -->
+        <img mat-card-avatar mat-card-image [src]="o.userSource.customPath">
+        <mat-card-title>{{ o.userSource.pseudo }}</mat-card-title>
+        <mat-card-subtitle>{{ o.created }}</mat-card-subtitle>
+    </mat-card-header>
+    <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+    <mat-card-content>
+        <p>
+            {{ o.message }}
+        </p>
+    </mat-card-content>
 </mat-card>

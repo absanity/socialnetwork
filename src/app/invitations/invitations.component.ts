@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {VariableService} from "../_services/variable.service";
 import {ActivatedRoute, Params} from "@angular/router";
+import {WebHttp} from "../classes/WebHttp";
+import {Websocket} from "../classes/Websocket";
 
 @Component({
   selector: 'app-invitations',
@@ -17,11 +18,11 @@ export class InvitationsComponent implements OnInit {
   _acceptInvitationUrl = ''
   invitations: Array<any> = []
 
-  constructor(private http: HttpClient, private variable: VariableService, private activatedRoute: ActivatedRoute) {
-    this._invitationsListUrl = this.variable.getMainUrl() + 'api/invitations'
-    this._deleteRelationshipUrl = this.variable.getMainUrl() + 'api/delete-relationship'
-    this._cancelInvitationUrl = this.variable.getMainUrl() + 'api/cancel-invitation'
-    this._acceptInvitationUrl = this.variable.getMainUrl() + 'api/accept-invitation'
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
+    this._invitationsListUrl = Websocket.URL + '/api/invitations'
+    this._deleteRelationshipUrl = Websocket.URL + '/api/delete-relationship'
+    this._cancelInvitationUrl = Websocket.URL + '/api/cancel-invitation'
+    this._acceptInvitationUrl = Websocket.URL + '/api/accept-invitation'
   }
 
   ngOnInit() {
@@ -45,7 +46,7 @@ export class InvitationsComponent implements OnInit {
           if(res[key].avatar.path == undefined){
             res[key].avatar.path = pseudoPath;
           }else{
-            res[key].customPath = 'http://192.168.160.133:4200/assets/uploads/' + res[key].avatar.path
+            res[key].customPath = WebHttp.URL + '/assets/uploads/' + res[key].avatar.path
             console.log(res[key].customPath)
           }
         }
