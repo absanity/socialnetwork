@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {VariableService} from "./variable.service";
+import {Websocket} from "../classes/Websocket";
 
 @Injectable()
 export class AuthService {
@@ -30,8 +31,10 @@ export class AuthService {
   }
 
   logoutUser() {
+    console.log('logout *****');
+    Websocket.socket.emit('forceDisconnect');
     localStorage.removeItem('token')
-    this._router.navigate(['/events'])
+    this._router.navigate(['/home'])
   }
 
   getToken() {

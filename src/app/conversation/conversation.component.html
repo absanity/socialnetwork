@@ -4,20 +4,34 @@
         <div class="main_room">
             <mat-chip-list>
                 <mat-chip color="primary" selected (click)="closeChat()">Fermer</mat-chip>
-                <mat-chip>Room principale</mat-chip>
-                <mat-chip>Papadum</mat-chip>
-                <mat-chip>Naan</mat-chip>
-                <mat-chip>Dal</mat-chip>
+                <mat-chip (click)="selectChannel('room', 'default')">Room principale</mat-chip>
+                <mat-chip *ngFor="let pseudo of selectedUsers" (click)="selectChannel('private', pseudo)">{{ pseudo }}</mat-chip>
             </mat-chip-list>
         </div>
         <div class="main_messages">
             <div class="content_row">
-                <div class="content_col col1"></div>
-                <div class="content_col col2"></div>
+                <div class="content_col col1">
+
+                    <div *ngFor="let message of conversations[currentConversationRef]">
+                        {{ message.senderPseudo }} :> {{ message.message }}
+                        <hr>
+                        <br/>
+                    </div>
+
+
+
+                </div>
+                <div class="content_col col2">
+
+                    <div *ngFor="let user of connectedUsers">
+                        <a class="conected-users" (click)="selectChannel('private', user.pseudo)">{{ user.pseudo }}</a>
+                    </div>
+
+                </div>
             </div>
         </div>
         <div class="main_input">
-            <input type="text" [(ngModel)]="inputMessage" (keyup.enter)="sendMessage()" />
+            <input type="text" [(ngModel)]="inputMessage" (keyup.enter)="validateInput()" />
         </div>
 
     </div>

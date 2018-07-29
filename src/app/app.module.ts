@@ -63,18 +63,18 @@ import {
   MatTooltipModule,
   MatAutocompleteModule,
 } from '@angular/material';
-import { SendComponent } from './send/send.component';
-
+import {SendComponent} from './send/send.component';
 
 
 import {VariableService} from "./_services/variable.service";
-import { WallComponent } from './wall/wall.component';
-import { ProfileComponent } from './profile/profile.component';
-import { MembersComponent } from './members/members.component';
-import { ProfileWallComponent } from './profile-wall/profile-wall.component';
-import { ProfileInfosComponent } from './profile-infos/profile-infos.component';
-import { ProfileFriendsComponent } from './profile-friends/profile-friends.component';
-import { ConversationComponent } from './conversation/conversation.component';
+import {WallComponent} from './wall/wall.component';
+import {ProfileComponent} from './profile/profile.component';
+import {MembersComponent} from './members/members.component';
+import {ProfileWallComponent} from './profile-wall/profile-wall.component';
+import {ProfileInfosComponent} from './profile-infos/profile-infos.component';
+import {ProfileFriendsComponent} from './profile-friends/profile-friends.component';
+import {ConversationComponent} from './conversation/conversation.component';
+import {WebsocketService} from "./_services/websocket.service";
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -119,11 +119,18 @@ import { ConversationComponent } from './conversation/conversation.component';
     MatGridListModule,
   ],
 
-  providers: [AuthService, AuthGuard, EventService, VariableService, UserService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
-    multi: true
-  }],
+  providers: [
+    AuthService,
+    AuthGuard,
+    EventService,
+    VariableService,
+    UserService,
+    WebsocketService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogComponent
