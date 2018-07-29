@@ -14,6 +14,7 @@ export class ProfileFriendsComponent implements OnInit {
   _friendsListUrl = ''
   friends: Array<any> = []
 
+
   constructor(private http: HttpClient, private variable: VariableService, private activatedRoute: ActivatedRoute) {
     this._friendsListUrl = this.variable.getMainUrl() + 'api/friends'
 
@@ -31,6 +32,18 @@ export class ProfileFriendsComponent implements OnInit {
       this._friendsListUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(res => {
       this.friends = Object.keys(res).map(function (key) {
+        let o;
+        //console.log(res[key].userSource.pseudo)
+        //console.log(pseudo)
+        if(res[key].userSource.pseudo == pseudo || pseudo == ''){
+
+          o = {pseudo: res[key].userTarget.pseudo, email: res[key].userTarget.email}
+        }else{
+          //console.log(res[key].userSource.pseudo)
+          o = {pseudo: res[key].userSource.pseudo, email: res[key].userSource.email}
+        }
+        res[key].finalUser = o;
+        console.log(res[key])
         return res[key];
       });
     });

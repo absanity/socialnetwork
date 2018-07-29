@@ -11,7 +11,8 @@
   <mat-card *ngFor="let o of invitations">
 
     <mat-card-header>
-      <div mat-card-avatar [ngStyle]="{'background-image':'url(http://api.adorable.io/avatars/20/'+o.pseudo+')'}"></div>
+      <img mat-card-avatar mat-card-image [src]="o.customPath">
+  <!--    <div mat-card-avatar [src]="{'background-image':'o.customPath')'}"></div> -->
       <mat-card-title>{{ o.pseudo }}</mat-card-title>
       <mat-card-subtitle>
         <div *ngIf="o.typeRelationship == 1">

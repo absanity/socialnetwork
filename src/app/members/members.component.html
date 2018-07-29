@@ -1,7 +1,14 @@
 <div class="searchBar">
-  <mat-form-field style="width:700px !important;">
-    <textarea [(ngModel)]="findAFriend.pseudo" name="pseudo" matInput placeholder="Find a friend, search by pseudo" style="height: 30px;"></textarea>
-  </mat-form-field>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Find a friend" aria-label="Number" matInput [formControl]="searchTerm" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let item of searchResult" [value]="item" (onSelectionChange)="selection(item)">
+          {{ item }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
 </div>
 <hr>
 <div class="tuto-main">
@@ -19,8 +26,11 @@
       <mat-card-title (click)="selectMember(member.pseudo)" class="link-pseudo">{{ member.pseudo }}</mat-card-title>
       <mat-card-subtitle (click)="selectMember(member.pseudo)" class="link-email">{{ member.email }}</mat-card-subtitle>
     </mat-card-header>
-    <img class='avatar' (click)="selectMember(member.pseudo)" mat-card-image [src]="'https://api.adorable.io/avatars/200/'+member.pseudo"
-         alt="Photo of a Shiba Inu">
+    <div >
+      <img class='avatar' (click)="selectMember(member.pseudo)" mat-card-image [src]="member.customPath"
+           alt="member.pseudo">
+    </div>
+
 
   </mat-card>
   <!--</mat-grid-tile>-->

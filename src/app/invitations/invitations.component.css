@@ -1,0 +1,17 @@
+/* FONT FOR THE HOMEPAGE*/
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=Caveat|Special+Elite');
+
+.mat-card-image:first-child {
+  margin-top: 0;
+}
+
+.mat-card-avatar {
+  margin-right: 2%;
+  margin-left: -1%;
+}
+
+.mat-card-title {
+  font-family: 'Special Elite', cursive;
+}

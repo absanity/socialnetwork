@@ -22,7 +22,9 @@ export class ProfileInfosComponent implements OnInit {
   _cancelInvitationUrl = ''
   _acceptInvitationUrl = ''
 
-  private infos: Object = {}
+  private myProfil: boolean = false;
+  private avDefault: boolean = false;
+  private infos: Object = {avatar:{}}
   protected message:string;
   protected push: string;
 
@@ -55,7 +57,22 @@ export class ProfileInfosComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._profileInfosUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(data => {
+      //console.log(data)
       this.infos = data;
+      console.log(data)
+
+      //console.log(Object.keys(data.preferences))
+      let pseudoPath = 'https://api.adorable.io/avatars/200/' + data['pseudo']
+      if(this.infos['avatar']['path'] == pseudoPath){
+        //console.log(data["avatar"]["path"] + 'api')
+        this.avDefault = true;
+      } else {
+        //console.log(data.avatar.path + 'custom')
+        this.avDefault = false;
+      }
+      if(localStorage.getItem('pseudo') == data['pseudo']){
+        this.myProfil = true;
+      }
     });
   }
 
@@ -64,7 +81,9 @@ export class ProfileInfosComponent implements OnInit {
     this.http.post<any>(this._inviteUrl, o).subscribe(
       res => {
         console.log('res.....');
+        let message = 'Your invitation has been sent !'
         this.loadInfos(this._pseudo);
+      //  this._pushNotifService.sendPushNotif(message)
       }
     )
   }
@@ -122,7 +141,7 @@ export class ProfileInfosComponent implements OnInit {
          let message = 'Picture uploaded'
          console.log(res)
          this.loadInfos(this._pseudo)
-         this._pushNotifService.sendPushNotif(message)
+         //this._pushNotifService.sendPushNotif(message)
          /*this.avatar;*/
        },
        err => { console.log(err) }

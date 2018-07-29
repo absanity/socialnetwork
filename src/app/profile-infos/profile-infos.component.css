@@ -1,10 +1,32 @@
+/* FONT FOR THE HOMEPAGE*/
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=Caveat|Special+Elite');
+
 .upchoices{
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
 .avatar {
-  width: 300px;
   height: 300px;
   display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.ng-star-inserted {
+  overflow: hidden;
+  width: 200px;
+}
+
+.mat-card-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+}
+
+.mat-card-image {
+
 }

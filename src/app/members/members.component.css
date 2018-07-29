@@ -1,3 +1,8 @@
+/* FONT FOR THE HOMEPAGE*/
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=Caveat|Special+Elite');
+
 .member-card {
     /*position: absolute;*/
     /*left: 0px;*/
@@ -13,14 +18,24 @@
 
 }
 
+.mat-card-image:first-child {
+  margin-top: 2px;
+  height: 238px;
+}
+
 .avatar {
     cursor: pointer;
 }
 
 .link-pseudo,
 .link-email {
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
+}
+
+.link-pseudo {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
 }
 
 .link-pseudo:hover,
@@ -29,5 +44,7 @@
 }
 
 /*SEARCH BAR*/
-.searchBar {
+.mat-form-field {
+  margin-left: 10%;
+  padding-top: 2%;
 }

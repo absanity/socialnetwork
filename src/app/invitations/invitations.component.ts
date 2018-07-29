@@ -36,6 +36,19 @@ export class InvitationsComponent implements OnInit {
       console.log('loadinvitations res...');
       console.log(res);
       this.invitations = Object.keys(res).map(function (key) {
+        let pseudoPath = 'https://api.adorable.io/avatars/200/' + res[key].pseudo;
+        let customPath = '';
+        if(res[key].avatar.path == 'https://api.adorable.io/avatars/200/' + res[key].pseudo){
+          res[key].customPath = pseudoPath
+          console.log(pseudoPath)
+        }else{
+          if(res[key].avatar.path == undefined){
+            res[key].avatar.path = pseudoPath;
+          }else{
+            res[key].customPath = 'http://localhost:4200/assets/uploads/' + res[key].avatar.path
+            console.log(res[key].customPath)
+          }
+        }
         return res[key];
       });
     });

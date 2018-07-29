@@ -5,6 +5,11 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
+import { Http } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { MatAutocompleteModule, MatInputModule } from '@angular/material';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
 
 ///// COMPONENTS /////
 import {HomeComponent} from './home/home.component';
@@ -28,6 +33,7 @@ import {EventService} from './_services/event.service';
 import {TokenInterceptorService} from './_services/token-interceptor.service';
 import {AuthGuard} from './auth.guard';
 import {PushNotifService} from './_services/push-notif.service';
+import {SearchService} from './_services/search.service';
 
 
 import {
@@ -42,7 +48,7 @@ import {
   MatExpansionModule,
   MatGridListModule,
   MatIconModule,
-  MatInputModule,
+
   MatListModule,
   MatMenuModule,
   MatNativeDateModule,
@@ -62,7 +68,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatAutocompleteModule,
+
 } from '@angular/material';
 import { SendComponent } from './send/send.component';
 
@@ -76,6 +82,7 @@ import { ProfileWallComponent } from './profile-wall/profile-wall.component';
 import { ProfileInfosComponent } from './profile-infos/profile-infos.component';
 import { ProfileFriendsComponent } from './profile-friends/profile-friends.component';
 import { NotifPushComponent } from './notif-push/notif-push.component';
+import { AdminComponent } from './admin/admin.component';
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
 
@@ -103,6 +110,7 @@ import { NotifPushComponent } from './notif-push/notif-push.component';
     ProfileInfosComponent,
     ProfileFriendsComponent,
     NotifPushComponent,
+    AdminComponent,
     //  InvalidmessageDirective,
     //  InvalidtypeDirective
   ],
@@ -118,9 +126,11 @@ import { NotifPushComponent } from './notif-push/notif-push.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatGridListModule,
+    HttpModule,
+    MatAutocompleteModule
   ],
 
-  providers: [AuthService, AuthGuard, EventService, VariableService, UserService, PushNotifService, {
+  providers: [AuthService, AuthGuard, EventService, VariableService, UserService, PushNotifService, SearchService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

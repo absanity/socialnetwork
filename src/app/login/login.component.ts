@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
     this._auth.loginUser(this.loginUserData)
       .subscribe(
         res => {
-        console.log('test1')
         console.log(res)
             localStorage.setItem('token', res['token'])
+            localStorage.setItem('pseudo', res['pseudo'])
           this._router.navigate(['/special'])//redirect the user to this route when the connexion is successfull
         },
         err => console.log('test2')

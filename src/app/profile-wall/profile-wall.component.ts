@@ -33,7 +33,7 @@ export class ProfileWallComponent implements OnInit {
     let o = { message: this.wallPost, pseudo: this._pseudo }
     this.http.post<any>(this._wallUrl, o).subscribe(
       res => {
-        console.log('res.....');
+        //console.log(o);
         this.wallPost = '';
         this.loadMessages(this._pseudo);
       }
@@ -44,11 +44,30 @@ export class ProfileWallComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._wallUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(data => {
+     console.log(data)
       this.messages = Object.keys(data).map(function (key) {
-        return data[key];
-      });
+        //console.log(data[key].userSource.pseudo)
+        //console.log(key)
+        //console.log(data[key])
+        //console.log('**')
+        let pseudoPath = 'https://api.adorable.io/avatars/200/' + data[key].userSource.pseudo;
+        let customPath = '';
+        if(data[key].userSource.avatar.path == pseudoPath){
+          //console.log(data[key].userSource.avatar.path + ' api')
+          data[key].userSource.customPath = pseudoPath
+          //console.log(pseudoPath)
+        }else{
+          if(data[key].userSource.avatar.path == undefined){
+            data[key].userSource.avatar.path = pseudoPath;
+          }else{
+            //console.log(data[key].userSource.avatar.path + ' custom')
+            data[key].userSource.customPath = 'http://localhost:4200/assets/uploads/' + data[key].userSource.avatar.path
+          }
+        //console.log(data[key])
+      }
+      return data[key];
+    });//end map
+  });//end subscribe
+  }//end loadMessages
 
-
-    });
-  }
 }
