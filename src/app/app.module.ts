@@ -114,9 +114,11 @@ import {WebsocketService} from "./_services/websocket.service";
     MatChipsModule,
     MatInputModule,
     MatCardModule,
+    MatButtonToggleModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatGridListModule,
+    MatIconModule,
   ],
 
   providers: [

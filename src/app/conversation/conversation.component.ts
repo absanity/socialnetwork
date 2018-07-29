@@ -5,6 +5,7 @@ import {VariableService} from "../_services/variable.service";
 
 import { Websocket } from "../classes/Websocket"
 import {WebsocketService} from "../_services/websocket.service";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-conversation',
@@ -23,6 +24,7 @@ export class ConversationComponent implements OnInit {
   currentConversationRef: String = 'room-default';
   connectedUsers: Array<any> = [];
   selectedUsers: Array<any> = [];
+  highlightedUsers: Object = {  };
 
   constructor(private http: HttpClient,
               private variable: VariableService,
@@ -51,53 +53,80 @@ export class ConversationComponent implements OnInit {
     // var clone = this;
 
     Websocket.socket.on('connect', function() {
-      console.log('on connect...');
+      console.log('*** on connect...');
       Websocket.socket.emit('send_token', localStorage.getItem('token'));
 
     });
-    Websocket.socket.on('disconnect', function() {
-      console.log('on disconnect...');
-
+    Websocket.socket.on('disconnect', function(data) {
+      console.log('*** on disconnect...');
+      clone.connectedUsers = data['connectedUsers'];
     });
     Websocket.socket.on('token_check', function(data) {
-      console.log('on token_check...');
+      console.log('*** on token_check...');
       console.log(data);
 
     });
     Websocket.socket.on('connected_users', function(data) {
-      console.log('on connected_users...');
+      console.log('*** on connected_users...');
       console.log(data);
       clone.connectedUsers = data;
 
     });
 
-
     Websocket.socket.on('message', function(data) {
-      console.log('on message...');
-      console.log(data);
+      console.log('*** on message...');
+
       let key = data['placeType'] + '-' + data['placeName'];
       let message = data.message;
-      // console.log(key);
-      // console.log(message);
       if(clone.conversations[key] == undefined) {
         clone.conversations[key] = [];
       }
       clone.conversations[key].push({ senderPseudo: data['senderPseudo'], message: message });
-      // console.log(clone.conversations);
+
+      if(clone.currentConversationRef != 'room-default') {
+        clone.highlightedUsers['room-default'] = true;
+      }
 
     });
 
     Websocket.socket.on('message-private-to-source', function(data) {
-      console.log('on message-private-to-source...');
-      console.log(data);
+      console.log('*** on message-private-to-source...');
+
+      let senderPseudo = data['senderPseudo'];
+      let targetPseudo = data['placeName'];
+      clone.addMessage(clone, senderPseudo, targetPseudo, data['message']);
+
     });
 
     Websocket.socket.on('message-private-to-target', function(data) {
-      console.log('on message-private-to-target...');
-      console.log(data);
+      console.log('*** on message-private-to-target...');
+
+      if(data['senderPseudo'] == localStorage.getItem('pseudo')) {
+        console.log('same pseudo for source');
+        return;
+      }
+      let senderPseudo = data['senderPseudo'];
+      let targetPseudo = data['senderPseudo'];
+      clone.addMessage(clone, senderPseudo, targetPseudo, data['message']);
+
+      if(clone.currentConversationRef != 'private-'+targetPseudo) {
+        clone.highlightedUsers['private-'+targetPseudo] = true;
+      }
+
     });
 
 
+  }
+
+  addMessage(clone, senderPseudo, targetPseudo, message) {
+    if(clone.selectedUsers.indexOf(targetPseudo) == -1) {
+      clone.selectedUsers.push(targetPseudo);
+    }
+    let key = 'private-' + targetPseudo;
+    if(clone.conversations[key] == undefined) {
+      clone.conversations[key] = [];
+    }
+    clone.conversations[key].push({ senderPseudo: senderPseudo, message: message });
   }
 
   closeChat() {
@@ -112,15 +141,22 @@ export class ConversationComponent implements OnInit {
 
   selectChannel(type, pseudo) {
 
-    console.log('selectUser: ...' + type + ' / ' + pseudo);
+    console.log('selectChannel: ...' + type + ' / ' + pseudo);
     console.log(this.selectedUsers.indexOf(type + '-' + pseudo));
+    let key;
     if(type == 'private') {
       if(this.selectedUsers.indexOf(pseudo) == -1) {
         this.selectedUsers.push(pseudo);
       }
-      this.currentConversationRef = 'private-' + pseudo;
+      key = 'private-' + pseudo;
     } else {
-      this.currentConversationRef = 'room-default';
+      key = 'room-default';
+    }
+
+    this.currentConversationRef = key;
+
+    if(!isUndefined(this.highlightedUsers[key])) {
+      delete this.highlightedUsers[key];
     }
 
 

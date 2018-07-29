@@ -27,7 +27,10 @@ export class LoginComponent implements OnInit {
     this._auth.loginUser(this.loginUserData)
       .subscribe(
         res => {
-          localStorage.setItem('token', res['token'])
+          console.log('login....');
+          console.log(res);
+          localStorage.setItem('token', res['token']);
+          localStorage.setItem('pseudo', res['pseudo']);
 
           this.websocketService.sendEvent({ type: 'connect' });
 

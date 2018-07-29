@@ -26,7 +26,9 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          localStorage.setItem('token', res['token'])
+          localStorage.setItem('token', res['token']);
+          localStorage.setItem('pseudo', res['pseudo']);
+
           this.websocketService.sendEvent({ type: 'connect' });
 
           this._router.navigate(['/home'])//redirect the user to this route when the connexion is successfull
