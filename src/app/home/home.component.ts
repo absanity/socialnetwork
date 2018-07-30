@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient, HttpResponse} from "@angular/common/http";
+import {Websocket} from "../classes/Websocket";
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   private loadInfos() {
     this.http.get<HttpResponse<any>>(
-      "http://192.168.160.133:3000/api/home"
+      Websocket.URL + "/api/home"
     ).subscribe(data => {
       this.globalStats = data;
       console.log(data)
