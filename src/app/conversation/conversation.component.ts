@@ -16,7 +16,6 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
   private socket;
   private state = 'small';
   private inputMessage = '';
-  private _chatMessageUrl:string = '';
 
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
@@ -31,7 +30,7 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
   constructor(private http: HttpClient,
               private websocketService: WebsocketService,
   ) {
-    this._chatMessageUrl = Websocket.URL + '/api/chat-message'
+    //
   }
 
   ngOnInit() {
@@ -82,6 +81,8 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
       console.log('*** on token_check...');
       console.log(data);
 
+      clone.loadPreviousMessages(clone.currentConversationRef);
+
     });
     Websocket.socket.on('connected_users', function(data) {
       console.log('*** on connected_users...');
@@ -98,6 +99,7 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
       let message = data.message;
       if(clone.conversations[key] == undefined) {
         clone.conversations[key] = [];
+        // clone.loadPreviousMessages(key);
       }
       clone.conversations[key].push({ senderPseudo: data['senderPseudo'], message: message });
 
@@ -147,8 +149,30 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
     let key = 'private-' + targetPseudo;
     if(clone.conversations[key] == undefined) {
       clone.conversations[key] = [];
+      // clone.loadPreviousMessages(key);
+
     }
     clone.conversations[key].push({ senderPseudo: senderPseudo, message: message });
+  }
+
+  loadPreviousMessages(key) {
+    console.log("loadPreviousMessages: " + key);
+    let o = {
+      key: key
+    }
+    this.http.post<any>(Websocket.URL + '/api/previous-messages', o).subscribe(
+      res => {
+        console.log('previous-messages res.....');
+        console.log(res);
+
+        if(this.conversations[key] == undefined) {
+          this.conversations[key] = [];
+        }
+
+        this.conversations[key] = res['messages'].concat(this.conversations[key]);
+
+      }
+    )
   }
 
   closeChat() {
@@ -183,6 +207,10 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
 
     this.addToHistory(key);
 
+    if(this.conversations[key] == undefined) {
+      this.loadPreviousMessages(key);
+    }
+
 
   }
 
@@ -195,7 +223,7 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
     console.log('placeName: ' + placeName);
     let o = { placeType: placeType, placeName: placeName, message: this.inputMessage }
     var clone = this;
-    this.http.post<any>(this._chatMessageUrl, o).subscribe(
+    this.http.post<any>(Websocket.URL + '/api/chat-message', o).subscribe(
       res => {
         console.log('validateInput res.....');
         clone.inputMessage = '';
