@@ -1,0 +1,94 @@
+<div class="block-main">
+
+  <div class="flex-container">
+
+    <div class="flex-item">
+      <mat-form-field [ngClass]="'input1'">
+        <input matInput placeholder="City" value="{{userSource.city}}"
+              #city (keyup.enter)="userSource.city=city.value;"
+              (focusout)="userSource.city=city.value;"
+        >
+      </mat-form-field>
+    </div>
+    <div class="flex-item">
+      <mat-form-field [ngClass]="'input1'">
+        <input matInput placeholder="Summary" value="{{userSource.summary}}"
+              #summary (keyup.enter)="userSource.summary=summary.value;"
+              (focusout)="userSource.summary=summary.value;"
+        >
+      </mat-form-field>
+    </div>
+    <div class="flex-item">
+      <br>
+      <p>Preferences</p>
+      <div class="">
+        <mat-checkbox [disabled]="userSource.disabled"
+                      (change)="toggleActivate($event, 'sustainable')" [checked]="userSource.preferences.sustainable">Sustainable development
+        </mat-checkbox>
+      </div>
+      <div class="">
+        <mat-checkbox [disabled]="userSource.disabled"
+                      (change)="toggleActivate($event, 'social')" [checked]="userSource.preferences.social">Social projects
+        </mat-checkbox>
+      </div>
+      <div class="">
+        <mat-checkbox [disabled]="userSource.disabled"
+                      (change)="toggleActivate($event, 'living')" [checked]="userSource.preferences.living">Green living
+        </mat-checkbox>
+      </div>
+      <div class="">
+        <mat-checkbox [disabled]="userSource.disabled"
+                      (change)="toggleActivate($event, 'fort')" [checked]="userSource.preferences.fort">Fort history
+        </mat-checkbox>
+      </div>
+      <div class="">
+        <mat-checkbox [disabled]="userSource.disabled"
+                      (change)="toggleActivate($event, 'coworking')" [checked]="userSource.preferences.coworking">Coworking
+        </mat-checkbox>
+      </div>
+      <div class="">
+        <mat-checkbox [disabled]="userSource.disabled" 
+                      (change)="toggleActivate($event, 'events')" [checked]="userSource.preferences.events">Events
+        </mat-checkbox>
+      </div>
+
+  <!--  <fieldset class="form-group">
+        <legend>Choose your preferences</legend>
+        <div class="form-check">
+        <input   name="Sustainable development" type="checkbox" class="form-check-input" value="">
+          <label class="control-label form-check-label">sustainable development</label>
+        </div>
+        <div class="form-check">
+          <input   name="Social projects" type="checkbox" class="form-check-input" value="">
+          <label class="control-label form-check-label">Social projects</label>
+        </div>
+        <div class="form-check">
+          <input   name="Green living" type="checkbox" class="form-check-input" value="">
+          <label class="control-label form-check-label" for="">Green living</label>
+        </div>
+        <div class="form-check">
+          <input   name="Fort history" type="checkbox" class="form-check-input" value="">
+          <label class="control-label form-check-label" for="">Fort history</label>
+        </div>
+        <div class="form-check">
+          <input  name="Coworking" type="checkbox" class="form-check-input" value="">
+          <label class="control-label form-check-label">Coworking</label>
+        </div>
+        <div class="form-check">
+          <input  name="Events" type="checkbox" class="form-check-input" value="">
+          <label class="control-label form-check-label">Events</label>
+        </div>
+      </fieldset> -->
+    </div>
+  </div>
+</div>
+<div class="bloc-actions">
+  <div style="width: 100%; padding-top: 0px; font-size: 9pt; text-align: center;">
+    <br>
+    <br>
+    <button class="mat-raised-button" (click)="onCancelClick()">Cancel</button>
+    <button mat-raised-button (click)="onValidateClick()">Update</button>
+    <br>
+    <br>
+  </div>
+</div>

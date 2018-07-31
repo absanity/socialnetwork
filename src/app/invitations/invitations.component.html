@@ -7,9 +7,20 @@
 
   <br/>
   <br/>
+  <mat-card-title id="punchline">Some new friends to add... or not</mat-card-title>
+  <mat-card *ngFor="let sugests of suggestions" class="member-card">
+    <mat-card-header>
+      <mat-card-title (click)="selectMember(sugests.pseudo)" class="link-pseudo">{{ sugests.pseudo }}</mat-card-title>
+      <mat-card-subtitle (click)="selectMember(sugests.pseudo)" class="link-email">{{ sugests.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <div >
+      <img class='avatar' (click)="selectMember(sugests.pseudo)" mat-card-image [src]="sugests.customPath"
+           alt="sugests.pseudo">
+    </div>
+  </mat-card>
 
-  <mat-card *ngFor="let o of invitations">
-
+<mat-card-title id="punchline">Summary of your relationships</mat-card-title>
+  <mat-card *ngFor="let o of invitations" class="requests">
     <mat-card-header>
       <img mat-card-avatar mat-card-image [src]="o.customPath">
   <!--    <div mat-card-avatar [src]="{'background-image':'o.customPath')'}"></div> -->

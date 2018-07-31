@@ -30,3 +30,14 @@
 .mat-card-image:first-child {
   margin-top: 0;
 }
+
+/*UPLOAD BTN */
+.btn {
+  margin-bottom: 1.5rem;
+}
+
+.mat-standard-chip {
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}

@@ -14,10 +14,13 @@ export class ProfileWallComponent implements OnInit {
   wallPost: String = '';
   _pseudo = ''
   _wallUrl = ''
+  _wallDelete = ''
   messages: Array<any> = []
+  private myProfil: boolean = false;
 
   constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
     this._wallUrl = Websocket.URL + '/api/profile-wall'
+    this._wallDelete = Websocket.URL + '/api/delete-message'
 
   }
 
@@ -26,6 +29,10 @@ export class ProfileWallComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this._pseudo = params['pseudo'] != undefined ? params['pseudo'] : '';
       this.loadMessages(this._pseudo);
+      console.log(this._pseudo)
+      if(this._pseudo == ""){
+        this.myProfil = true;
+      }
     });
 
   }
@@ -47,28 +54,31 @@ export class ProfileWallComponent implements OnInit {
     ).subscribe(data => {
      console.log(data)
       this.messages = Object.keys(data).map(function (key) {
-        //console.log(data[key].userSource.pseudo)
-        //console.log(key)
-        //console.log(data[key])
-        //console.log('**')
+        let prof;
         let pseudoPath = 'https://api.adorable.io/avatars/200/' + data[key].userSource.pseudo;
         let customPath = '';
         if(data[key].userSource.avatar.path == pseudoPath){
-          //console.log(data[key].userSource.avatar.path + ' api')
           data[key].userSource.customPath = pseudoPath
-          //console.log(pseudoPath)
         }else{
           if(data[key].userSource.avatar.path == undefined){
             data[key].userSource.avatar.path = pseudoPath;
           }else{
-            //console.log(data[key].userSource.avatar.path + ' custom')
-            data[key].userSource.customPath = WebHttp.URL + '/assets/uploads/' + data[key].userSource.avatar.path
+            data[key].userSource.customPath = Websocket.URL + '/uploads/' + data[key].userSource.avatar.path
           }
-        //console.log(data[key])
       }
       return data[key];
     });//end map
   });//end subscribe
   }//end loadMessages
+
+  deleteMessage(res){
+    console.log(res)
+    let msgd = {res}
+    this.http.post<any>(this._wallDelete, msgd).subscribe(
+      res => {
+        this.loadMessages(this._pseudo)
+      }
+    )
+  }
 
 }

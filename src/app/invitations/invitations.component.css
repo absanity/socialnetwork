@@ -15,3 +15,56 @@
 .mat-card-title {
   font-family: 'Special Elite', cursive;
 }
+
+.member-card {
+    /*position: absolute;*/
+    /*left: 0px;*/
+    /*top: 0px;*/
+    padding: 0px;
+    margin-top: 0px!important;
+    height: 350px!important;
+    width: 190px!important;
+    float: left;
+    overflow: hidden;
+    margin: 0px 10px 10px 0px;
+    margin-bottom: 3rem;
+    /*display: inline-block;*/
+
+}
+/*
+.mat-card-image:first-child {
+  margin-top: 2px;
+  height: 238px;
+}
+*/
+.avatar {
+    cursor: pointer;
+    margin-top: 2px;
+    height: 238px;
+}
+
+.link-pseudo,
+.link-email {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link-pseudo {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+}
+
+.link-pseudo:hover,
+.link-email:hover {
+    text-decoration: none;
+}
+
+.requests {
+  display: flex;
+  clear: both;
+}
+
+#punchline {
+  font-size: 1rem;
+  clear: both;
+}

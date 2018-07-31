@@ -38,7 +38,7 @@ export class NotifPushComponent implements OnInit, OnDestroy { //use for clean u
   }
 
   private _hideModal(){
-    jQuery(this.myModal.nativeElement).remove();
+    jQuery(this.myModal.nativeElement).modal("hide");
   }
 
 }

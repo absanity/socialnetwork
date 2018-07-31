@@ -31,23 +31,39 @@ export class ProfileFriendsComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._friendsListUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(res => {
+      //console.log(this.friends)
       this.friends = Object.keys(res).map(function (key) {
         let o;
-        console.log(res[key])
+        //console.log(res[key])
         console.log(pseudo)
         console.log(res[key].userSource.pseudo)
         console.log(res[key].userTarget.pseudo)
-        if(res[key].userSource.pseudo == pseudo){
-          console.log('source')
-          o = {pseudo: res[key].userTarget.pseudo, email: res[key].userTarget.email}
+        if(res[key].userSource.pseudo == pseudo || pseudo == ''){
+          //console.log('source')
+          o = {pseudo: res[key].userTarget.pseudo, email: res[key].userTarget.email, avatar: res[key].userTarget.avatar}
+          console.log(o +  ' target')
         }else{
           //console.log(res[key].userSource.pseudo)
-          console.log('target')
-          o = {pseudo: res[key].userSource.pseudo, email: res[key].userSource.email}
+          //console.log('target')
+          o = {pseudo: res[key].userSource.pseudo, email: res[key].userSource.email, avatar: res[key].userSource.avatar}
+          console.log(o + ' source')
         }
         res[key].finalUser = o;
         console.log(o)
-        console.log(res[key])
+
+        let pseudoPath = 'https://api.adorable.io/avatars/200/' + o.avatar.path;
+        let customPath = '';
+        if(o.avatar.path == 'https://api.adorable.io/avatars/200/' + o.pseudo){
+          o.customPath = pseudoPath
+        }else{
+          if(o.avatar.path == undefined){
+            o.avatar.path = pseudoPath
+          }else{
+            o.customPath = Websocket.URL + '/uploads/'+ o.avatar.path
+          }
+        }
+        //console.log(o)
+        //console.log(res[key])
         return res[key];
       });
     });
