@@ -1,6 +1,6 @@
 <div class="tuto-main">
   <mat-form-field style="width:700px !important;">
-    <textarea [(ngModel)]="wallPost" matInput placeholder="Mur..." style="height: 100px;" (keyup.enter)="save()"></textarea>
+    <textarea [(ngModel)]="wallPost" matInput placeholder="Wall..." style="height: 100px;" (keyup.enter)="save()"></textarea>
   </mat-form-field>
 
 
@@ -9,7 +9,7 @@
   <mat-card *ngFor="let o of messages">
 
     <mat-card-header>
-      <div mat-card-avatar [ngStyle]="{'background-image':'url(http://api.adorable.io/avatars/20/'+o.userSource.pseudo+')'}"></div>
+      <img mat-card-avatar mat-card-image [src]="o.userSource.customPath">
       <mat-card-title>{{ o.userSource.pseudo }}</mat-card-title>
       <mat-card-subtitle>{{ o.created }}</mat-card-subtitle>
     </mat-card-header>

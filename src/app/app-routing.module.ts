@@ -15,6 +15,8 @@ import {InvitationsComponent} from "./invitations/invitations.component";
 import {WallComponent} from "./wall/wall.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {MembersComponent} from "./members/members.component";
+import {AdminComponent} from "./admin/admin.component";
+import {UpdateMemberComponent} from "./update-member/update-member.component";
 
 const routes: Routes = [
   {
@@ -80,6 +82,16 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'update',
+    component: UpdateMemberComponent,
     canActivate: [AuthGuard]
   },
   {

@@ -4,3 +4,7 @@
     top: 0px;
     padding: 10px;
 }
+
+.mat-standard-chip {
+  cursor: pointer;
+}

@@ -64,7 +64,7 @@ export class MembersComponent implements OnInit {
         }else{
           //console.log(res[key].avatar.path + ' custom')
           res[key].avDefault = false;
-          res[key].customPath = WebHttp.URL + '/assets/uploads/' + res[key].avatar.path
+          res[key].customPath = Websocket.URL + '/uploads/' + res[key].avatar.path
         }
       }
       console.log(res[key])

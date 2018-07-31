@@ -44,6 +44,21 @@ export class WallComponent implements OnInit {
       console.log('res...');
       console.log(data);
       this.messages = Object.keys(data).map(function (key) {
+        let pseudoPath = 'https://api.adorable.io/avatars/200/' + data[key].userSource.pseudo;
+        let customPath = '';
+        if(data[key].userSource.avatar.path == pseudoPath){
+          //console.log(data[key].userSource.avatar.path + ' api')
+          data[key].userSource.customPath = pseudoPath
+          //console.log(pseudoPath)
+        }else{
+          if(data[key].userSource.avatar.path == undefined){
+            data[key].userSource.avatar.path = pseudoPath;
+          }else{
+            //console.log(data[key].userSource.avatar.path + ' custom')
+            data[key].userSource.customPath = Websocket.URL + '/uploads/' + data[key].userSource.avatar.path
+          }
+        //console.log(data[key])
+      }
         return data[key];
       });
 

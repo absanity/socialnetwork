@@ -25,6 +25,7 @@ import {LoginComponent} from './login/login.component';
 import {EventsComponent} from './events/events.component';
 import {SpecialEventsComponent} from './special-events/special-events.component';
 import {ResetpasswordComponent} from './resetpassword/resetpassword.component';
+import {UpdateMemberComponent} from './update-member/update-member.component';
 
 ///// SERVICES /////
 import {UserService} from './_services/user.service';
@@ -84,6 +85,7 @@ import { NotifPushComponent } from './notif-push/notif-push.component';
 import {ConversationComponent} from './conversation/conversation.component';
 import {WebsocketService} from "./_services/websocket.service";
 import { AdminComponent } from './admin/admin.component';
+//import { UpdateMemberComponent } from './update-member/update-member.component';
 
 //import { InvalidmessageDirective } from './invalidmessage.directive';
 //import { InvalidtypeDirective } from './invalidtype.directive';
@@ -114,6 +116,7 @@ import { AdminComponent } from './admin/admin.component';
     NotifPushComponent,
     AdminComponent,
     ConversationComponent,
+    UpdateMemberComponent,
     //  InvalidmessageDirective,
     //  InvalidtypeDirective
   ],
@@ -126,14 +129,16 @@ import { AdminComponent } from './admin/admin.component';
     MatChipsModule,
     MatInputModule,
     MatCardModule,
+    MatCheckboxModule,
     MatButtonToggleModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatGridListModule,
-
+    MatSnackBarModule,
     HttpModule,
     MatIconModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatButtonModule
   ],
 
   providers: [
