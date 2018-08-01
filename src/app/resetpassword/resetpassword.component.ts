@@ -29,7 +29,7 @@ export class ResetpasswordComponent implements OnInit {
     this._userService.resetpassword(this.requester)
       .subscribe(
         (res) => {
-            console.log(res)
+            //console.log(res)
             this._router.navigate(['/login']);
         },
         (err) => {

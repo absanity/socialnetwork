@@ -18,7 +18,7 @@
           </div>
           <div class="form-group" [class.has-danger]="fullPasswordControl.invalid && fullPasswordControl.touched" [class.has-success]="fullPasswordControl.valid">
             <label class="control-label" for="">Password</label>
-            <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-0" #fullPasswordControl="ngModel" required>
+            <input (click)="testmail(registerUserData.email)" [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-0" #fullPasswordControl="ngModel" required>
             <span class="errors" *ngIf="fullPasswordControl.invalid && fullPasswordControl.touched">Provide a password</span>
       <!--      <div invalidmessage="name">
               <p *invalidType="'required'">Please provide password</p>
@@ -26,7 +26,7 @@
           </div>
           <div class="form-group" [class.has-danger]="fullPseudoControl.invalid && fullPseudoControl.touched " [class.has-success]="fullPseudoControl.valid">
             <label class="control-label" for="">Pseudo</label>
-            <input [(ngModel)]="registerUserData.pseudo" type="text" name="pseudo" class="form-control rounded-0" #fullPseudoControl="ngModel" required>
+            <input (click)="testmail(registerUserData.email)" [(ngModel)]="registerUserData.pseudo" type="text" name="pseudo" class="form-control rounded-0" #fullPseudoControl="ngModel" required>
             <span class="errors" *ngIf="fullPseudoControl.invalid && fullPseudoControl.touched">Choose a pseudo</span>
       <!--      <div invalidmessage="name">
               <p *invalidType="'required'">Please provide name</p>
@@ -34,27 +34,27 @@
           </div>
           <div class="form-group" [class.has-danger]="fullNameControl.invalid && fullNameControl.touched" [class.has-success]="fullNameControl.valid">
             <label class="control-label" for="">Name</label>
-            <input [(ngModel)]="registerUserData.name" name="name" type="name" class="form-control rounded-0" #fullNameControl="ngModel" required>
+            <input (click)="testmail(registerUserData.email)" [(ngModel)]="registerUserData.name" name="name" type="name" class="form-control rounded-0" #fullNameControl="ngModel" required>
             <span class="errors" *ngIf="fullNameControl.invalid && fullNameControl.touched">Give your name</span>
           </div>
           <div class="form-group" [class.has-danger]="fullSurnameControl.invalid && fullSurnameControl.touched" [class.has-success]="fullSurnameControl.valid">
             <label class="control-label" for="">Surname</label>
-            <input [(ngModel)]="registerUserData.surname" name="surname" type="surname" class="form-control rounded-0" #fullSurnameControl="ngModel" required>
+            <input (click)="testmail(registerUserData.email)" [(ngModel)]="registerUserData.surname" name="surname" type="surname" class="form-control rounded-0" #fullSurnameControl="ngModel" required>
             <span class="errors" *ngIf="fullSurnameControl.invalid && fullSurnameControl.touched">Add your surname</span>
           </div>
           <div class="form-group" [class.has-danger]="fullAgeControl.invalid && fullAgeControl.touched" [class.has-success]="fullAgeControl.valid">
             <label class="control-label" for="">Age</label>
-            <input [(ngModel)]="registerUserData.age" name="age" type="age" class="form-control rounded-0" #fullAgeControl="ngModel" required>
+            <input (click)="testmail(registerUserData.email)" [(ngModel)]="registerUserData.age" name="age" type="age" class="form-control rounded-0" #fullAgeControl="ngModel" required>
             <span class="errors" *ngIf="fullAgeControl.invalid && fullAgeControl.touched">Tell us your age</span>
           </div>
           <div class="form-group" [class.has-danger]="fullCityControl.invalid && fullCityControl.touched" [class.has-success]="fullCityControl.valid">
             <label class="control-label" for="">City</label>
-            <input [(ngModel)]="registerUserData.city" name="city" type="city" class="form-control rounded-0" #fullCityControl="ngModel" required>
+            <input (click)="testmail(registerUserData.email)" [(ngModel)]="registerUserData.city" name="city" type="city" class="form-control rounded-0" #fullCityControl="ngModel" required>
             <span class="errors" *ngIf="fullCityControl.invalid && fullCityControl.touched">Enter your city</span>
           </div>
           <div class="form-group" [class.has-danger]="fullGenderControl.invalid && fullGenderControl.touched" [class.has-success]="fullGenderControl.valid">
             <label class="control-label" for="">Gender</label>
-            <input [(ngModel)]="registerUserData.gender" name="gender" type="gender" class="form-control rounded-0" #fullGenderControl="ngModel" required>
+            <input (click)="testmail(registerUserData.email)" [(ngModel)]="registerUserData.gender" name="gender" type="gender" class="form-control rounded-0" #fullGenderControl="ngModel" required>
             <span class="errors" *ngIf="fullGenderControl.invalid && fullGenderControl.touched">Give us your gender</span>
           </div>
           <fieldset class="form-group">
@@ -86,10 +86,11 @@
           </fieldset>
           <div class="form-group" [class.has-danger]="fullSummaryControl.invalid && fullSummaryControl.touched" [class.has-success]="fullSummaryControl.valid">
             <label class="control-label" for="">Summary</label>
-            <input [(ngModel)]="registerUserData.summary" name="summary" type="summary" class="form-control rounded-0" #fullSummaryControl="ngModel" required>
+            <input (click)="testmail(registerUserData.email)" [(ngModel)]="registerUserData.summary" name="summary" type="summary" class="form-control rounded-0" #fullSummaryControl="ngModel" required>
             <span class="errors" *ngIf="fullSummaryControl.invalid && fullSummaryControl.touched">Write about you</span>
           </div>
           <button (click)="registerUser()" class="btn btn-primary float-right" type="submit" [disabled]="registerForm.invalid">Register</button>
+          <span class="errors" *ngIf="ok == false">Please provide a valid email</span>
         </form>
       </div>
     </div>

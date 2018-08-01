@@ -12,6 +12,7 @@ import {WebsocketService} from "../_services/websocket.service";
 export class RegisterComponent implements OnInit {
 
   registerUserData: Object = {preferences: {}}
+  ok: boolean
 
   constructor(private _auth: AuthService,
               private _router: Router,
@@ -21,19 +22,29 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  testmail(mail){
+    var emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      this.ok = emailRegex.test(mail);
+  }
+
   registerUser() {
-    this._auth.registerUser(this.registerUserData)//registerUserData is the data stored in mongodb
-      .subscribe(
-        res => {
-          console.log(res);
-          localStorage.setItem('token', res['token']);
-          localStorage.setItem('pseudo', res['pseudo']);
 
-          this.websocketService.sendEvent({ type: 'connect' });
+    if(this.ok == true){
+      this._auth.registerUser(this.registerUserData)//registerUserData is the data stored in mongodb
+          .subscribe(
+            res => {
+              //console.log(res);
+              localStorage.setItem('token', res['token']);
+              localStorage.setItem('pseudo', res['pseudo']);
 
-          this._router.navigate(['/home'])//redirect the user to this route when the connexion is successfull
-        },
-        err => console.log(err)
-      )
+              this.websocketService.sendEvent({ type: 'connect' });
+
+              this._router.navigate(['/wall'])//redirect the user to this route when the connexion is successfull
+            },
+            err => console.log(err)
+          )
+    }else{
+      console.log("pas ok")
+    }
   }
 }
