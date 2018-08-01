@@ -37,7 +37,7 @@ export class UpdateMemberComponent implements OnInit {
       this._updateMemberUrl
     ).subscribe(data => {
       this.userSource = data;
-      console.log(data)
+      //console.log(data)
     });
   }
 
@@ -46,9 +46,9 @@ export class UpdateMemberComponent implements OnInit {
   }
 
   onValidateClick() {
-    console.log('////VALIDATE///')
-    console.log(this.userSource)
-    console.log(this._updatedMemberUrl)
+    //console.log('////VALIDATE///')
+    //console.log(this.userSource)
+    //console.log(this._updatedMemberUrl)
   //  this.http.post<any>(this._updatedMemberUrl, {content: JSON.stringify(this.userSource)}/*, this.onValidated.bind(this)*/)
     //this.router.navigate(['/profile'])
 

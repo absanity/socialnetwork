@@ -34,11 +34,11 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
   }
 
   ngOnInit() {
-    console.log('conversation ngOnInit....');
+    //console.log('conversation ngOnInit....');
     var clone = this;
     this.websocketService.onEvent.subscribe(o => {
-      console.log('this.websocketService.change.subscribe **********');
-      console.log(o);
+      //console.log('this.websocketService.change.subscribe **********');
+      //console.log(o);
       if(o.type == 'connect') {
         clone.initSocket(clone);
       }
@@ -58,7 +58,7 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
   }
 
   initSocket(clone) {
-    console.log('initSocket...');
+    //console.log('initSocket...');
     if(Websocket.socket != null) {
       Websocket.socket.disconnect();
     }
@@ -69,31 +69,31 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
     // var clone = this;
 
     Websocket.socket.on('connect', function() {
-      console.log('*** on connect...');
+      //console.log('*** on connect...');
       Websocket.socket.emit('send_token', localStorage.getItem('token'));
 
     });
     Websocket.socket.on('disconnect', function(data) {
-      console.log('*** on disconnect...');
+      //console.log('*** on disconnect...');
       clone.connectedUsers = data['connectedUsers'];
     });
     Websocket.socket.on('token_check', function(data) {
-      console.log('*** on token_check...');
+      //console.log('*** on token_check...');
       console.log(data);
 
       clone.loadPreviousMessages(clone.currentConversationRef);
 
     });
     Websocket.socket.on('connected_users', function(data) {
-      console.log('*** on connected_users...');
+      //console.log('*** on connected_users...');
       console.log(data);
       clone.connectedUsers = data;
 
     });
 
     Websocket.socket.on('message', function(data) {
-      console.log('*** on message...');
-      console.log(data);
+      //console.log('*** on message...');
+      //console.log(data);
 
       let key = data['placeType'] + '-' + data['placeName'];
       let message = data.message;
@@ -112,7 +112,7 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
     });
 
     Websocket.socket.on('message-private-to-source', function(data) {
-      console.log('*** on message-private-to-source...');
+      //console.log('*** on message-private-to-source...');
 
       let senderPseudo = data['senderPseudo'];
       let targetPseudo = data['placeName'];
@@ -121,10 +121,10 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
     });
 
     Websocket.socket.on('message-private-to-target', function(data) {
-      console.log('*** on message-private-to-target...');
+      //console.log('*** on message-private-to-target...');
 
       if(data['senderPseudo'] == localStorage.getItem('pseudo')) {
-        console.log('same pseudo for source');
+        //console.log('same pseudo for source');
         return;
       }
       let senderPseudo = data['senderPseudo'];
@@ -176,19 +176,19 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
   }
 
   closeChat() {
-    console.log('closeChat...');
+    //console.log('closeChat...');
     this.state = 'small'
   }
 
   openChat() {
-    console.log('openChat...');
+    //console.log('openChat...');
     this.state = 'big'
   }
 
   selectChannel(type, pseudo) {
 
-    console.log('selectChannel: ...' + type + ' / ' + pseudo);
-    console.log(this.selectedUsers.indexOf(type + '-' + pseudo));
+    //console.log('selectChannel: ...' + type + ' / ' + pseudo);
+    //console.log(this.selectedUsers.indexOf(type + '-' + pseudo));
     let key;
     if(type == 'private') {
       if(this.selectedUsers.indexOf(pseudo) == -1) {
@@ -215,35 +215,35 @@ export class ConversationComponent implements OnInit, AfterViewChecked  {
   }
 
   validateInput() {
-    console.log('validateInput...');
+    //console.log('validateInput...');
     let tab = this.currentConversationRef.split('-');
     let placeType = tab.shift();
     let placeName = tab.join('-');
-    console.log('placeType: ' + placeType);
-    console.log('placeName: ' + placeName);
+    //console.log('placeType: ' + placeType);
+    //console.log('placeName: ' + placeName);
     let o = { placeType: placeType, placeName: placeName, message: this.inputMessage }
     var clone = this;
     this.http.post<any>(Websocket.URL + '/api/chat-message', o).subscribe(
       res => {
-        console.log('validateInput res.....');
+        //console.log('validateInput res.....');
         clone.inputMessage = '';
       }
     )
   }
 
   addToHistory(key) {
-    console.log('********************************');
+    //console.log('********************************');
     let index = this.historyConversationRef.indexOf(key);
     if(index != -1) {
       this.historyConversationRef.splice(index, 1);
     }
     this.historyConversationRef.push(key);
-    console.log(this.historyConversationRef);
+    //console.log(this.historyConversationRef);
   }
 
   closeCurrentChannel() {
 
-    console.log('closeCurrentChannel...');
+    //console.log('closeCurrentChannel...');
 
     if(this.historyConversationRef.length == 0) {
       this.selectChannel('room', 'default');

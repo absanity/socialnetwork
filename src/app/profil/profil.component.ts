@@ -24,7 +24,7 @@ export class ProfilComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('profil')
+    //console.log('profil')
     let o = {}
     this.http.get<any>(Websocket.URL + "/api/events", {})
       .subscribe(

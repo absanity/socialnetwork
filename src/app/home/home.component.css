@@ -40,7 +40,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 20vh; /* poussé de la moitié de hauteur de viewport */
+  margin-top: 15vh; /* poussé de la moitié de hauteur de viewport */
   transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
   text-align: center;
   margin-left: 3%;
@@ -79,5 +79,11 @@ button {
   margin-top: 2px;
   padding: 0 0.2rem;
   font-family: 'Special Elite', cursive;
-  color: white;
+  margin-top: 1rem;
+}
+
+.stat{
+  color: black;
+  background-color: white;
+  padding: 0 0.5rem;
 }

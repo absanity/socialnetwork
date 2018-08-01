@@ -3,6 +3,7 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {ActivatedRoute, Params} from "@angular/router";
 import {WebHttp} from "../classes/WebHttp";
 import {Websocket} from "../classes/Websocket";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-invitations',
@@ -20,7 +21,7 @@ export class InvitationsComponent implements OnInit {
   invitations: Array<any> = []
   private suggestions: Array<any>;
 
-  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private router: Router) {
     this._invitationsListUrl = Websocket.URL + '/api/invitations'
     this._deleteRelationshipUrl = Websocket.URL + '/api/delete-relationship'
     this._cancelInvitationUrl = Websocket.URL + '/api/cancel-invitation'
@@ -76,14 +77,17 @@ export class InvitationsComponent implements OnInit {
               res[key].customPath = Websocket.URL + '/uploads/' + res[key].avatar.path
             }
           }
-          console.log(res[key])
+          //console.log(res[key])
           return res[key]
         })//end map function
       }
     )
   }
 
-
+  selectMember(pseudo: String){
+    //console.log('selectMember')
+    this.router.navigate(['/profile'], {queryParams: {pseudo: pseudo}})
+  }
 
   deleteRelationship(pseudo) {
     let o = { pseudo: pseudo }

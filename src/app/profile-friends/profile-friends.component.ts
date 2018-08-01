@@ -35,21 +35,21 @@ export class ProfileFriendsComponent implements OnInit {
       this.friends = Object.keys(res).map(function (key) {
         let o;
         //console.log(res[key])
-        console.log(pseudo)
-        console.log(res[key].userSource.pseudo)
-        console.log(res[key].userTarget.pseudo)
+        //console.log(pseudo)
+        //console.log(res[key].userSource.pseudo)
+        //console.log(res[key].userTarget.pseudo)
         if(res[key].userSource.pseudo == pseudo || pseudo == ''){
           //console.log('source')
           o = {pseudo: res[key].userTarget.pseudo, email: res[key].userTarget.email, avatar: res[key].userTarget.avatar}
-          console.log(o +  ' target')
+          //console.log(o +  ' target')
         }else{
           //console.log(res[key].userSource.pseudo)
           //console.log('target')
           o = {pseudo: res[key].userSource.pseudo, email: res[key].userSource.email, avatar: res[key].userSource.avatar}
-          console.log(o + ' source')
+          //console.log(o + ' source')
         }
         res[key].finalUser = o;
-        console.log(o)
+        //console.log(o)
 
         let pseudoPath = 'https://api.adorable.io/avatars/200/' + o.avatar.path;
         let customPath = '';

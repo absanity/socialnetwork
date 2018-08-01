@@ -31,7 +31,7 @@ export class MembersComponent implements OnInit {
       .debounceTime(400)
       .subscribe(data => {
         this.service.search_word(data).subscribe(response => {
-          console.log(response)
+          //console.log(response)
           this.searchResult = response
         })
       })
@@ -67,7 +67,7 @@ export class MembersComponent implements OnInit {
           res[key].customPath = Websocket.URL + '/uploads/' + res[key].avatar.path
         }
       }
-      console.log(res[key])
+      //console.log(res[key])
         return res[key];
       })//end map
     });//end subscribe
@@ -76,7 +76,7 @@ export class MembersComponent implements OnInit {
 
 
   selectMember(pseudo: String) {
-    console.log('selectMember ... ' + pseudo);
+    //console.log('selectMember ... ' + pseudo);
     this.router.navigate(['/profile'], { queryParams: { pseudo: pseudo }})
   }
 

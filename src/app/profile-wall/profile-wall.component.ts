@@ -29,7 +29,7 @@ export class ProfileWallComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this._pseudo = params['pseudo'] != undefined ? params['pseudo'] : '';
       this.loadMessages(this._pseudo);
-      console.log(this._pseudo)
+      //console.log(this._pseudo)
       if(this._pseudo == ""){
         this.myProfil = true;
       }
@@ -52,7 +52,7 @@ export class ProfileWallComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._wallUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(data => {
-     console.log(data)
+     //console.log(data)
       this.messages = Object.keys(data).map(function (key) {
         let prof;
         let pseudoPath = 'https://api.adorable.io/avatars/200/' + data[key].userSource.pseudo;
@@ -72,7 +72,7 @@ export class ProfileWallComponent implements OnInit {
   }//end loadMessages
 
   deleteMessage(res){
-    console.log(res)
+    //console.log(res)
     let msgd = {res}
     this.http.post<any>(this._wallDelete, msgd).subscribe(
       res => {

@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       Websocket.URL + "/api/home"
     ).subscribe(data => {
       this.globalStats = data;
-      console.log(data)
+      //console.log(data)
       //this.stats = data;
     });
   }
