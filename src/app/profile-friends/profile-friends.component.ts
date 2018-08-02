@@ -31,11 +31,6 @@ export class ProfileFriendsComponent implements OnInit {
     this.http.get<HttpResponse<any>>(
       this._friendsListUrl + (pseudo != '' ? '?pseudo=' + pseudo : '')
     ).subscribe(res => {
-      console.log('loadFriends res....');
-      console.log(this.friends)
-      if(!res) {
-        return
-      }
       this.friends = Object.keys(res).map(function (key) {
         let o;
         //console.log(res[key])
