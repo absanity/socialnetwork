@@ -52,7 +52,7 @@ export class InvitationsComponent implements OnInit {
           if(res[key].avatar.path == undefined){
             res[key].avatar.path = pseudoPath;
           }else{
-            res[key].customPath = Websocket.URL + '/uploads/' + res[key].avatar.path
+            res[key].customPath = Websocket.URL + '/api/uploads/' + res[key].avatar.path
             //console.log(res[key].customPath)
           }
         }
@@ -74,7 +74,7 @@ export class InvitationsComponent implements OnInit {
             if(res[key].avatar.path == undefined){
               res[key].customPath = pseudoPath
             }else{
-              res[key].customPath = Websocket.URL + '/uploads/' + res[key].avatar.path
+              res[key].customPath = Websocket.URL + '/api/uploads/' + res[key].avatar.path
             }
           }
           //console.log(res[key])

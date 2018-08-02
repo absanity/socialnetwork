@@ -55,7 +55,7 @@ export class WallComponent implements OnInit {
             data[key].userSource.avatar.path = pseudoPath;
           }else{
             //console.log(data[key].userSource.avatar.path + ' custom')
-            data[key].userSource.customPath = Websocket.URL + '/uploads/' + data[key].userSource.avatar.path
+            data[key].userSource.customPath = Websocket.URL + '/api/uploads/' + data[key].userSource.avatar.path
           }
         //console.log(data[key])
       }

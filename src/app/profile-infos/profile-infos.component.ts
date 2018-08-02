@@ -74,7 +74,7 @@ export class ProfileInfosComponent implements OnInit {
       } else {
         //console.log('custom')
         //this.avDefault = false;
-        this.infos['avatar']['path'] = Websocket.URL + '/uploads/' + this.infos['avatar']['path']
+        this.infos['avatar']['path'] = Websocket.URL + '/api/uploads/' + this.infos['avatar']['path']
         //console.log(data.avatar.path)
       }
       console.log(localStorage.getItem('pseudo') + ' / ' + data['pseudo']);

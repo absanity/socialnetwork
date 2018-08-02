@@ -58,7 +58,7 @@ export class ProfileFriendsComponent implements OnInit {
           if(o.avatar.path == undefined){
             o.avatar.path = pseudoPath
           }else{
-            o.customPath = Websocket.URL + '/uploads/'+ o.avatar.path
+            o.customPath = Websocket.URL + '/api/uploads/'+ o.avatar.path
           }
         }
         //console.log(o)

@@ -63,7 +63,7 @@ export class ProfileWallComponent implements OnInit {
           if(data[key].userSource.avatar.path == undefined){
             data[key].userSource.avatar.path = pseudoPath;
           }else{
-            data[key].userSource.customPath = Websocket.URL + '/uploads/' + data[key].userSource.avatar.path
+            data[key].userSource.customPath = Websocket.URL + '/api/uploads/' + data[key].userSource.avatar.path
           }
       }
       return data[key];
