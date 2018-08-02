@@ -17,6 +17,6 @@
   "apiServer": {
     "metadata": "https://#{apiServerPrefix}.demo.com/api/v1.0/",
     "rule": "https://#{apiServerPrefix}.demo.com/api/v1.0/",
-    "baseUrl": "https://agence.lacimenterie.archi"
+    "baseUrl": "http://audreyrocher.com"
   }
 }

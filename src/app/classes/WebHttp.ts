@@ -1,3 +1,4 @@
 export const WebHttp = {
-  URL: 'http://localhost:4200'
+  // URL: 'http://audreyrocher.com'
+  URL: 'http://192.168.160.133:4200'
 };

@@ -77,6 +77,7 @@ export class ProfileInfosComponent implements OnInit {
         this.infos['avatar']['path'] = Websocket.URL + '/uploads/' + this.infos['avatar']['path']
         //console.log(data.avatar.path)
       }
+      console.log(localStorage.getItem('pseudo') + ' / ' + data['pseudo']);
       if(localStorage.getItem('pseudo') == data['pseudo']){
         this.myProfil = true;
       }

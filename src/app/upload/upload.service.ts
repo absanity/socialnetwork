@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 import {Observable, Subject} from "rxjs/index";
+import {WebHttp} from "../classes/WebHttp";
 // import { Subject } from 'rxjs/Subject';
 // import { Observable } from 'rxjs/Observable';
 
-const url = 'http://localhost:8000/upload';
+// const url = 'http://localhost:8000/upload';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class UploadService {
 
       // create a http-post request and pass the form
       // tell it to report the upload progress
-      const req = new HttpRequest('POST', url, formData, {
+      const req = new HttpRequest('POST', WebHttp.URL + '/upload', formData, {
         reportProgress: true
       });
 
